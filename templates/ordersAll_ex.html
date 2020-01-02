@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Заказы {% endblock %}
+
+{% block styles %}
+     <link rel="stylesheet" type="text/css" href= "{% static "css/index.css" %}" >
+{% endblock %}
+
+
+{% block content %}
+
+   <div class="container">
+      {% include "order_list.html" %}
+   </div>
+
+
+   <form action="order_create">
+      <p><input type="submit"></p>
+   </form>
+
+
+{% endblock %}

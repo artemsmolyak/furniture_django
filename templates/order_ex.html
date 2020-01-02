@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} Заказ {% endblock %}
+
+
+{% block content %}
+
+   Данные о заказе №{{ order.id}} <br>
+   Дата заказа {{ order.date_created }}<br>
+   Заказчик: {{ order.surname }} {{ order.name }} {{ order.patronymic }} <br>
+   Дeтали: {{ order.details }}<br>
+
+
+{% endblock %}

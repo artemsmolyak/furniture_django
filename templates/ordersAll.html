@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+</head>
+<body>
+
+    Заказы: <br>
+    {% for order in orders %}
+
+        <a href=/order/{{ order.id }}/ >
+            Номер заказа: {{ order.id }} <br>
+            Покупаnель: {{ order.name }}  {{ order.patronymic }}  {{  order.surname }} <br>
+            Детали: {{ order.details }} <br>
+        </a>
+        <br>
+
+    {% endfor %}
+
+   <form action="order_create">
+   <p><input type="submit"></p>
+   </form>
+
+</body>
+</html>
