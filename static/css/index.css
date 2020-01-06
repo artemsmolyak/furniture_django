@@ -1,3 +1,30 @@
 .navigation{
     margin-bottom: 20px;
 }
+
+
+.order_created{
+    background-color: #7abaff;
+}
+
+
+.order_calculated{
+    background-color: #b1dfbb;
+}
+
+
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+.card-padding{
+   padding: 10px;
+    margin: 10px;
+}

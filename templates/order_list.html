@@ -1,15 +1,16 @@
  <div class="order_list">
-     <div class="order_list__item">
 
-          {% for order in orders %}
-               <a href=/order/{{ order.id }}/ >
-                   <h5>Номер заказа: {{ order.id }}</h5><br>
-                   <h6>Покупаnель: {{ order.name }}  {{  order.patronymic }}  {{  order.surname }}</h6> <br>
-                   <p>Детали: {{ order.details }}</p> <br>
-              </a>
-           <br>
-          {% endfor %}
+    <div class="card-header text-center">Создано</div>
 
+    <div class="card-rows">
 
-     </div>
+              {% for order in orders %}
+
+                       <a href=/order/{{ order.id }}/ >
+                             {% include "order_leaf.html" %}
+                       </a>
+
+              {% endfor %}
+    </div>
+
  </div>
