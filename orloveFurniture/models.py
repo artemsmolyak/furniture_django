@@ -14,14 +14,19 @@ class StatusCatalog(models.Model):
 
 
 class Order(models.Model):
+
+    id = models.AutoField(primary_key=True)
+
     date_created = models.DateTimeField(default=timezone.now)
-    details = models.TextField()
 
     surname = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     patronymic = models.CharField(max_length=255)
 
     status = models.ForeignKey(StatusCatalog, models.SET_NULL, blank=True, null=True)
+
+    details = models.TextField()
+
 
     def save(self, *args, **kwargs):
         super(Order, self).save(*args, **kwargs)
@@ -30,11 +35,6 @@ class Order(models.Model):
         return self.name + " " + self.surname + ": " + self.details
 
 
-
-class RequiredMaterial(models.Model):
-    idOrder = models.IntegerField()
-    idMaterial = models.IntegerField()
-    count = models.IntegerField()
 
 
 class RequiredOperation(models.Model):
@@ -64,6 +64,21 @@ class MaterialCatalog(models.Model):
         return self.name
 
 
+
+
+class RequiredMaterial(models.Model):
+
+    id = models.AutoField(primary_key=True)
+
+    idOrder = models.ForeignKey(Order, models.SET_NULL, blank=True, null=True)
+
+    idMaterial = models.ForeignKey(MaterialCatalog, models.SET_NULL, blank=True, null=True)
+
+    count = models.IntegerField()
+
+
+
+
 class OperationCatalog(models.Model):
     date_created = models.DateTimeField
     name = models.CharField(max_length=255)
@@ -81,9 +96,11 @@ class PositionCatalog(models.Model):
 
 class WorkerCatalog(models.Model):
     date_created = models.DateTimeField
+
     name = models.CharField(max_length=255)
     surname = models.CharField(max_length=255)
     patronymic = models.CharField(max_length=255)
+
     position = models.ManyToManyField(PositionCatalog)
 
     def __str__(self):

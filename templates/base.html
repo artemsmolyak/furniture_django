@@ -23,7 +23,7 @@
 
 <body>
       {% block nav %}
-         <nav class="navigation navbar navbar-expand-lg navbar-light bg-light">
+         <nav class="navigation navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -33,14 +33,20 @@
               </li>
 
 
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/order_create">Создать заказ</a>
+                </li>
 
 
-              <li class="nav-item dropdown">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/order_create">Сформировать заявку на материалы</a>
+                </li>
+
+
+
+              <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Словари
+                  Справочники
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Склад</a>
@@ -70,18 +76,7 @@
 
 
 
-    {% block footer %}
-    <footer id="footer navbar-fixed-bottom " class="footer"><!--Footer-->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <p class="pull-left">Copyright © 2020</p>
-                    <p class="pull-right"></p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    {% endblock %}
+
 
 </body>
 </html>

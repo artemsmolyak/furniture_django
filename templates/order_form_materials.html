@@ -1,0 +1,94 @@
+{% load static %}
+
+
+
+<table class="table table-bordered" id = "form_set">
+    <thead>
+    <tr>
+        <th scope="col">Требуемый материал</th>
+        <th scope="col">Нужное количество</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    {{ formMaterials.management_form }}
+
+    {% for formMaterial in formMaterials %}
+
+
+
+            <tr class = "formset_row-{{ formset.prefix }} ">
+                <td> {{ formMaterial.idMaterial }}</td>
+                <td> {{ formMaterial.count }}</td>
+                <td>  <button type="submit" class="btn btn-secondary" value="Save" id='{{ formMaterial.id }}' > Удалить </button> </td>
+            </tr>
+
+
+
+    {% endfor %}
+
+
+    </tbody>
+</table>
+
+
+
+
+<input type="button" value="Add More" id="add_more">
+
+
+
+
+
+<div id="empty_form" style="display:none">
+
+    <tr>
+         {{ formMaterials.empty_form.as_p }}
+         <button type="button" data-formset-delete-button>Delete form</button>
+    </tr>
+
+</div>
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+
+<script type="text/javascript">
+
+     jQuery(function($) {
+        $("#formset").formMaterials({
+            animateForms: true
+        });
+    });
+
+
+ $('#add_more').click(function() {
+
+    $('#form_set tbody').append($('#empty_form').html());
+
+});
+
+
+ $('#Remove').click(function() {
+
+    $('#form_set tbody').append($('#empty_form').html());
+
+});
+
+
+
+ $('.formset_row-{{ formset.prefix }} ').formset({
+        addText: 'add link9',
+        deleteText: 'remove',
+        prefix: '{{ formset.prefix }}'
+    });
+
+
+</script>
+
+
+

@@ -1,30 +1,102 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from orloveFurniture.models import Order
-from .forms import OrderForm
+from .models import Order, StatusCatalog, RequiredMaterial
+from .forms import OrderForm, RequiredMaterialForm
+from django.forms.models import modelformset_factory
+
+
 
 def orders(request):
-    orders = Order.objects.all()
-    return render(request, "ordersAll.html", {"orders" : orders})
+
+    ordersArray = []
+    statusNameArray = []
+
+    statuses = StatusCatalog.objects.all()
+
+    for stat in statuses:
+        order = Order.objects.filter(status = stat.id)
+        ordersArray.append( order )
+        statusNameArray.append(stat.name)
+
+    return render(request, "ordersAll.html", {"ordersArray" : ordersArray, "statusNameArray" : statusNameArray })
+
+
+
 
 
 
 def order(request, good_id):
-    order = Order.objects.get(pk = good_id)
-    return render(request, "order.html", {"order": order})
+
+    if request.method == "POST":
+
+        ordersArray = []
+        statusNameArray = []
+
+        statuses = StatusCatalog.objects.all()
+
+        for stat in statuses:
+            order = Order.objects.filter(status=stat.id)
+            ordersArray.append(order)
+            statusNameArray.append(stat.name)
+
+        return render(request, "ordersAll.html", {"ordersArray": ordersArray, "statusNameArray": statusNameArray})
+
+    else:
+
+        obj = get_object_or_404(Order, id=good_id)
+        form = OrderForm(instance=obj)
+
+        RequiredMaterialFormset = modelformset_factory(RequiredMaterial, form=RequiredMaterialForm, extra=1)
+        formMaterials = RequiredMaterialFormset(queryset=RequiredMaterial.objects.filter(idOrder=good_id))
+
+    return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials})
+
 
 
 
 
 def order_create(request):
-    return render(request, "order_create.html", {})
 
+    form = OrderForm(request.POST or None )
 
-
-
-def order_create_(request):
     if request.method == "POST":
-        return HttpResponse("Thanks")
 
-    form = OrderForm()
-    return render(request, "order_create_.html", {'form' : form})
+        if form.is_valid():
+            form.save()
+
+            ordersArray = []
+            statusNameArray = []
+
+            statuses = StatusCatalog.objects.all()
+
+            for stat in statuses:
+                order = Order.objects.filter(status=stat.id)
+                ordersArray.append(order)
+                statusNameArray.append(stat.name)
+
+            return render(request, "ordersAll.html", {"ordersArray": ordersArray, "statusNameArray": statusNameArray})
+        else:
+            return HttpResponse("error")
+
+    return render(request, "order_create.html", {'form' : form})
+
+
+
+
+def order_edit(request, good_id):
+    obj = get_object_or_404(Order, id=good_id)
+
+    form = OrderForm(request.POST or None, instance=obj)
+    context = {'form': form}
+
+    if form.is_valid():
+        obj = form.save(commit=False)
+
+        obj.save()
+
+        context = {'form': form}
+
+        return HttpResponse("Updated")
+
+    else:
+        return HttpResponse("NOT Updated")

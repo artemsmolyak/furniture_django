@@ -1,0 +1,77 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class = "col-6">
+            <form method="post">
+                {%  csrf_token  %}
+
+                {{ form.non_field_errors }}
+
+                <div class="form-group">
+                    {{ form.id.errors }}
+
+                    <label for="{{ form.id.id_for_label }}">Заказ</label><br>
+
+                    {{ form.id }}
+
+                </div>
+
+
+                <div class="form-group">
+                    {{ form.surname.errors }}
+
+                    <label for="{{ form.surname.id_for_label }}">Фамилия</label><br>
+
+                    {{ form.surname }}
+
+                </div>
+
+
+
+                <div class="form-group">
+                    {{ form.name.errors }}
+
+                    <label for="{{ form.name.id_for_label }}">Имя</label><br>
+
+                    {{ form.name }}
+
+                </div>
+
+
+
+                <div class="form-group">
+                    {{ form.patronymic.errors }}
+
+                    <label for="{{ form.patronymic.id_for_label }}">Отчество</label><br>
+
+                    {{ form.patronymic }}
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="exampleFormControlSelect2">Статус</label><br>
+
+                    {{ form.status }}
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="{{ form.details.id_for_label }}">Детали</label><br>
+                    {{ form.details }}
+                </div>
+
+
+
+                <button type="submit" class="btn btn-secondary" value="Save" name = "btn1"> Сохранить </button>
+                <button type="submit" class="btn btn-secondary" value="Remove" name = "btn2"> Удалить </button>
+
+            </form>
+        </div>
+
+    </div>
+</div>
