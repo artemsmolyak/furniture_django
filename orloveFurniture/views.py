@@ -29,6 +29,15 @@ def order(request, good_id):
 
     if request.method == "POST":
 
+
+
+        orderForm = OrderForm(request.POST or None)
+
+        if orderForm.is_valid():
+            orderForm.save()
+
+
+
         ordersArray = []
         statusNameArray = []
 
@@ -59,6 +68,10 @@ def order_create(request):
 
     form = OrderForm(request.POST or None )
 
+    formMaterials = RequiredMaterialForm(request.POST or None)
+
+
+
     if request.method == "POST":
 
         if form.is_valid():
@@ -78,7 +91,7 @@ def order_create(request):
         else:
             return HttpResponse("error")
 
-    return render(request, "order_create.html", {'form' : form})
+    return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials})
 
 
 

@@ -7,6 +7,7 @@
     <tr>
         <th scope="col">Требуемый материал</th>
         <th scope="col">Нужное количество</th>
+        <th scope="col"></th>
     </tr>
     </thead>
 
@@ -18,7 +19,8 @@
 
             <tr class = "formset_row-{{ formset.prefix }} ">
                 <td> {{ formMaterial.idMaterial }}</td>
-                <td> {{ formMaterial.count }}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td> {{ formMaterial.count }}</td>
+                <td></td>
             </tr>
 
     {% endfor %}

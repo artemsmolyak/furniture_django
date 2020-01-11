@@ -37,3 +37,10 @@ p{
 .main-window{
     margin: 70px;
 }
+
+
+/* для расстояние между элементами главного меню */
+li{
+padding-left: 15px;
+padding-rigth: 15px;
+}
