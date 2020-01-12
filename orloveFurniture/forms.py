@@ -4,14 +4,16 @@ from djangoformsetjs.utils import formset_media_js
 
 class OrderForm(forms.ModelForm):
 
-    surname = forms.CharField(max_length=255)
-    name = forms.CharField(max_length=255)
-    patronymic = forms.CharField(max_length=255)
     details = forms.CharField(widget=forms.Textarea)
+
 
     class Meta:
         model = Order
-        fields = ('__all__')
+        exclude = ['date_created']
+        widgets = {'surname': forms.TextInput(attrs={'size': 40}),
+                   'name': forms.TextInput(attrs={'size': 40}),
+                   'patronymic': forms.TextInput(attrs={'size': 40}),
+                   'idOrder': forms.TextInput(attrs={'size': 40})}
 
     def __init__(self, *args, **kwargs):
         super(OrderForm, self).__init__(*args, **kwargs)
@@ -26,7 +28,7 @@ class RequiredMaterialForm(forms.ModelForm):
 
     class Meta:
         model = RequiredMaterial
-        fields = [ 'idMaterial', 'count']
+        fields = [ 'idMaterial', 'count', 'idOrder']
 
 
 

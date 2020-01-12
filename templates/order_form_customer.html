@@ -1,23 +1,32 @@
-<div class="container">
+
+{% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+
+<div class="container bg-light">
 
     <div class="row">
 
-        <div class = "col-6 bg-light">
-
-            <form method="post">
+        <div class = "navigation padding">
 
                 {%  csrf_token  %}
 
-                {{ form.non_field_errors }}
+                {{ form.errors }}
+
+                {% for error in form.non_field_errors %}
+                    {{error}}
+                {% endfor %}
+
 
                 <div class="form-group">
-                    {{ form.id.errors }}
 
-                    <label for="{{ form.id.id_for_label }}">Заказ</label><br>
-
-                    {{ form.id }}
+                   <center> <b> <label>Заказ номер</label>  {{ objOrder.id }} </b> </center>
 
                 </div>
+
 
 
                 <div class="form-group">
@@ -69,12 +78,6 @@
                     {{ form.details }}
                 </div>
 
-
-
-                <button type="submit" class="btn btn-secondary" value="Save" name = "btn1"> Сохранить </button>
-                <button type="submit" class="btn btn-secondary" value="Remove" name = "btn2"> Удалить </button>
-
-            </form>
         </div>
 
     </div>

@@ -1,45 +1,53 @@
 
-<div class="container">
+<form method="post">
 
-    <div class="row">
+    <div class="container">
 
-        <div class = "col-6">
-
-            {% include "order_form_customer.html"  %}
-
-        </div>
+        <div class="row">
 
 
-        <div class = "col-6">
+            <div class = "col-6">
 
-            <ul class="nav nav-tabs">
-                <li class="active nav-item nav-link"><a data-toggle="tab" href="#home">Материалы</a></li>
-                <li class="active nav-item nav-link"><a data-toggle="tab" href="#menu1">Эскизы</a></li>
-                <li class="active nav-item nav-link"><a data-toggle="tab" href="#menu2">Операции</a></li>
-            </ul>
-
-
-
-            <div class="tab-content">
-
-                <div id="home" class="tab-pane tab-pane active fade show">
-
-                    {% include "order_form_materials.html"  %}
-
-                </div>
-
-                <div id="menu1" class="tab-pane fade">
-                    <h3>Menu 1</h3>
-                    <p>Some content in menu 1.</p>
-                </div>
-
-                <div id="menu2" class="tab-pane fade">
-                    <h3>Menu 2</h3>
-                    <p>Some content in menu 2.</p>
-                </div>
+                {% include "order_form_customer.html"  %}
 
             </div>
 
+
+            <div class = "col-6">
+
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Материалы</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1">Эскизы</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu2">Операции</a></li>
+                </ul>
+
+
+
+                <div class="tab-content">
+
+                    <div id="home" class="tab-pane tab-pane active fade show">
+
+                        {% include "order_form_materials.html"  %}
+
+                    </div>
+
+                    <div id="menu1" class="tab-pane fade">
+                        <h3>Menu 1</h3>
+                        <p>Some content in menu 1.</p>
+                    </div>
+
+                    <div id="menu2" class="tab-pane fade">
+                        <h3>Menu 2</h3>
+                        <p>Some content in menu 2.</p>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
+
+    <button type="submit" class="btn btn-secondary" value="Save" name = "btn1"> Сохранить </button>
+    <button type="submit" class="btn btn-secondary" value="Remove" name = "btn2"> Удалить </button>
+
+</form>

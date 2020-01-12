@@ -27,38 +27,28 @@ def orders(request):
 
 def order(request, good_id):
 
+    obj = get_object_or_404(Order, id=good_id)
+    form = OrderForm(instance=obj)
+
     if request.method == "POST":
-
-
 
         orderForm = OrderForm(request.POST or None)
 
         if orderForm.is_valid():
             orderForm.save()
 
+            return orders(request)
 
-
-        ordersArray = []
-        statusNameArray = []
-
-        statuses = StatusCatalog.objects.all()
-
-        for stat in statuses:
-            order = Order.objects.filter(status=stat.id)
-            ordersArray.append(order)
-            statusNameArray.append(stat.name)
-
-        return render(request, "ordersAll.html", {"ordersArray": ordersArray, "statusNameArray": statusNameArray})
 
     else:
 
-        obj = get_object_or_404(Order, id=good_id)
-        form = OrderForm(instance=obj)
+        objOrder = get_object_or_404(Order, id=good_id)
+        form = OrderForm(instance=objOrder)
 
         RequiredMaterialFormset = modelformset_factory(RequiredMaterial, form=RequiredMaterialForm, extra=1)
         formMaterials = RequiredMaterialFormset(queryset=RequiredMaterial.objects.filter(idOrder=good_id))
 
-    return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials})
+    return render(request, "order_create.html", {"objOrder": objOrder, "form": form, "formMaterials" : formMaterials})
 
 
 
@@ -66,30 +56,35 @@ def order(request, good_id):
 
 def order_create(request):
 
-    form = OrderForm(request.POST or None )
-
-    formMaterials = RequiredMaterialForm(request.POST or None)
-
-
 
     if request.method == "POST":
 
-        if form.is_valid():
-            form.save()
+        orderform = OrderForm(request.POST)
 
-            ordersArray = []
-            statusNameArray = []
+        RequiredMaterialFormset = modelformset_factory(RequiredMaterial, form=RequiredMaterialForm, extra=1)
+        formMaterials = RequiredMaterialFormset(request.POST)
 
-            statuses = StatusCatalog.objects.all()
+        if orderform.is_valid():
+            orderObj = orderform.save()
 
-            for stat in statuses:
-                order = Order.objects.filter(status=stat.id)
-                ordersArray.append(order)
-                statusNameArray.append(stat.name)
+            if formMaterials.is_valid() and formMaterials.total_form_count() != 0 :
+                for form in formMaterials:
 
-            return render(request, "ordersAll.html", {"ordersArray": ordersArray, "statusNameArray": statusNameArray})
-        else:
-            return HttpResponse("error")
+                    if form['count'].value():
+                        choice = form.save(commit=False)
+                        choice.idOrder = orderObj
+                        choice.save()
+
+            return orders(request)
+
+        return render(request, "order_create.html", {"form": orderform, "formMaterials": formMaterials})
+
+
+
+    form = OrderForm(None)
+
+    RequiredMaterialFormset = modelformset_factory(RequiredMaterial, form=RequiredMaterialForm, extra=1)
+    formMaterials = RequiredMaterialFormset(queryset=RequiredMaterial.objects.none())
 
     return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials})
 

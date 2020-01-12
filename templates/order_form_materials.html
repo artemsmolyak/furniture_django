@@ -17,11 +17,14 @@
 
     {% for formMaterial in formMaterials %}
 
+            {{ formMaterial.management_form }}
+
             <tr class = "formset_row-{{ formset.prefix }} ">
                 <td> {{ formMaterial.idMaterial }}</td>
                 <td> {{ formMaterial.count }}</td>
                 <td></td>
             </tr>
+
 
     {% endfor %}
 

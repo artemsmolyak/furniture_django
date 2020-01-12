@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.utils import timezone
-
+import uuid
 
 
 class StatusCatalog(models.Model):
@@ -15,7 +15,7 @@ class StatusCatalog(models.Model):
 
 class Order(models.Model):
 
-    id = models.AutoField(primary_key=True)
+    idOrder = models.CharField(max_length=36, blank=True, unique=False, default=uuid.uuid4)
 
     date_created = models.DateTimeField(default=timezone.now)
 

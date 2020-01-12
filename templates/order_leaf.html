@@ -1,6 +1,6 @@
 
-<div class="card bg-light card-padding rounded border-light ">
-        <p class="card-title">Номер заказа: {{ order.id }} </p>
-        <p>Покупаnель:{{ order.name }}  {{  order.patronymic }}  {{  order.surname }} </p>
-        <p class="card-text">Детали: {{ order.details }}</p>
+<div class="card card-padding rounded  ">
+        <b class="card-title">Номер заказа {{ order.id }} </b>
+        <b>Заказчик: </b> {{  order.surname }} {{ order.name }}  {{ order.patronymic }}
+        <b class="card-text">Детали: </b> {{ order.details }}
 </div>

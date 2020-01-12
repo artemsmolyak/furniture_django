@@ -3,15 +3,9 @@
 }
 
 
-.order_created{
-    background-color: #7abaff;
+.padding{
+    padding: 10px;
 }
-
-
-.order_calculated{
-    background-color: #b1dfbb;
-}
-
 
 
 .footer {
@@ -29,7 +23,7 @@
     margin: 10px;
 }
 
-p{
+b{
      color: black;
 }
 
@@ -44,3 +38,5 @@ li{
 padding-left: 15px;
 padding-rigth: 15px;
 }
+
+
