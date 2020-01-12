@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Order, StatusCatalog, RequiredMaterial
+from .models import Order, StatusCatalog, RequiredMaterial, Storage
 from .forms import OrderForm, RequiredMaterialForm
-from django.forms.models import modelformset_factory
-
+from django.forms.models import modelformset_factory, inlineformset_factory
+from django.db.models import Sum
 
 
 def orders(request):
@@ -30,25 +30,42 @@ def order(request, good_id):
     obj = get_object_or_404(Order, id=good_id)
     form = OrderForm(instance=obj)
 
+    RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
+
     if request.method == "POST":
 
-        orderForm = OrderForm(request.POST or None)
+        instance = get_object_or_404(Order, id=good_id)
+        orderForm = OrderForm(request.POST, instance=instance)
 
         if orderForm.is_valid():
-            orderForm.save()
+            obj = orderForm.save()
 
-            return orders(request)
+            formMaterials = RequiredMaterialFormset(request.POST, instance=obj)
+
+            if formMaterials.is_valid():
+
+                instance = RequiredMaterial.objects.filter(idOrder=obj)
+                instance .delete()
+
+                formMaterials.save(commit=False)
+
+                for form in formMaterials:
+                    if form['count'].value():
+                        choice = form.save(commit=False)
+                        choice.idOrder = obj
+                        choice.save()
+
+
+                return orders(request)
+
+            return render(request, "order_create.html", {"objOrder": instance, "form": form, "formMaterials": formMaterials})
 
 
     else:
 
-        objOrder = get_object_or_404(Order, id=good_id)
-        form = OrderForm(instance=objOrder)
+        formMaterials = RequiredMaterialFormset(instance=obj)
 
-        RequiredMaterialFormset = modelformset_factory(RequiredMaterial, form=RequiredMaterialForm, extra=1)
-        formMaterials = RequiredMaterialFormset(queryset=RequiredMaterial.objects.filter(idOrder=good_id))
-
-    return render(request, "order_create.html", {"objOrder": objOrder, "form": form, "formMaterials" : formMaterials})
+    return render(request, "order_create.html", {"objOrder": obj, "form": form, "formMaterials" : formMaterials})
 
 
 
@@ -57,17 +74,20 @@ def order(request, good_id):
 def order_create(request):
 
 
+    RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
+
+
     if request.method == "POST":
 
         orderform = OrderForm(request.POST)
 
-        RequiredMaterialFormset = modelformset_factory(RequiredMaterial, form=RequiredMaterialForm, extra=1)
         formMaterials = RequiredMaterialFormset(request.POST)
 
         if orderform.is_valid():
             orderObj = orderform.save()
 
-            if formMaterials.is_valid() and formMaterials.total_form_count() != 0 :
+            if formMaterials.is_valid():
+                formMaterials.save(commit=False)
                 for form in formMaterials:
 
                     if form['count'].value():
@@ -75,7 +95,7 @@ def order_create(request):
                         choice.idOrder = orderObj
                         choice.save()
 
-            return orders(request)
+                return orders(request)
 
         return render(request, "order_create.html", {"form": orderform, "formMaterials": formMaterials})
 
@@ -83,7 +103,6 @@ def order_create(request):
 
     form = OrderForm(None)
 
-    RequiredMaterialFormset = modelformset_factory(RequiredMaterial, form=RequiredMaterialForm, extra=1)
     formMaterials = RequiredMaterialFormset(queryset=RequiredMaterial.objects.none())
 
     return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials})
@@ -108,3 +127,28 @@ def order_edit(request, good_id):
 
     else:
         return HttpResponse("NOT Updated")
+
+
+
+
+
+
+
+
+def store(request):
+
+    materialsInStore = Storage.objects.all()
+
+
+    return render(request, "store.html", {'materialsInStore' : materialsInStore})
+
+
+
+def createRequestMaterials(request):
+
+    needMaterials = RequiredMaterial.objects.order_by('idMaterial')
+
+
+    haveMaterials = Storage.objects.all().order_by('idMaterial')
+
+    return render(request, "materialsRequest.html", {"needMaterials" : needMaterials, "haveMaterials" : haveMaterials})

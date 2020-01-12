@@ -38,6 +38,7 @@ class Order(models.Model):
 
 
 class RequiredOperation(models.Model):
+
     idOrder = models.IntegerField()
     idOperation = models.IntegerField()
     idWorker = models.IntegerField()
@@ -46,7 +47,9 @@ class RequiredOperation(models.Model):
 
 
 class DillerCatalog(models.Model):
+
     date_created = models.DateTimeField
+
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
@@ -57,12 +60,12 @@ class DillerCatalog(models.Model):
 
 
 class MaterialCatalog(models.Model):
+
     date_created = models.DateTimeField
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
-
 
 
 
@@ -78,13 +81,15 @@ class RequiredMaterial(models.Model):
 
 
 
-
 class OperationCatalog(models.Model):
     date_created = models.DateTimeField
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
+
+
+
 
 
 class PositionCatalog(models.Model):
@@ -111,12 +116,13 @@ class WorkerCatalog(models.Model):
 
 
 class Storage(models.Model):
+
     date_created = models.DateTimeField
-    name = models.CharField(max_length=255)
+
+    idMaterial = models.ForeignKey(MaterialCatalog, models.SET_NULL, blank=True, null=True)
     count = models.IntegerField()
 
-    def __str__(self):
-        return self.name
+
 
 
 

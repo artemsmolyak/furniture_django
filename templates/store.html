@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Заказы {% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href= "{% static "css/index.css" %}" >
+{% endblock %}
+
+
+{% block content %}
+
+    <div class = "main-window">
+
+
+        <table class="table table-bordered" id = "form_set">
+            <thead>
+            <tr>
+                <th scope="col">Материал</th>
+                <th scope="col">Количество</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for material in materialsInStore %}
+                <tr>
+                    <td>
+                        {{  material.idMaterial }}
+                    </td>
+                    <td>
+
+                        {{  material.count }}
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+{% endblock %}

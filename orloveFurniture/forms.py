@@ -9,7 +9,7 @@ class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        exclude = ['date_created']
+        exclude = ['date_created', 'idOrder']
         widgets = {'surname': forms.TextInput(attrs={'size': 40}),
                    'name': forms.TextInput(attrs={'size': 40}),
                    'patronymic': forms.TextInput(attrs={'size': 40}),

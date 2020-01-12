@@ -17,12 +17,26 @@
 
     {% for formMaterial in formMaterials %}
 
-            {{ formMaterial.management_form }}
+        {{ formMaterial.management_form }}
 
-            <tr class = "formset_row-{{ formset.prefix }} ">
+
+        {{ formMaterial.errors }}
+
+        {% for error in formMaterial.non_field_errors %}
+            {{error}}
+        {% endfor %}
+
+
+
+        {% for hidden in formMaterial.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+
+            <tr class = "formset_row-{{ formMaterials.prefix }}">
                 <td> {{ formMaterial.idMaterial }}</td>
                 <td> {{ formMaterial.count }}</td>
-                <td></td>
+                <td> {{ formMaterial.errors }}</td>
             </tr>
 
 
@@ -38,14 +52,17 @@
 
 <script type="text/javascript">
 
- $('.formset_row-{{ formset.prefix }} ').formset({
+ $('.formset_row-{{ formMaterials.prefix }}').formset({
         addText: '+',
         deleteText: 'x',
-        prefix: '{{ formset.prefix }}'
+        prefix: '{{ formMaterials.prefix }}',
+        animateForms: true
     });
 
 
 </script>
+
+
 
 
 
