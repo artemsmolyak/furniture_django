@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01ef6b62-f271-40c5-bbac-120cf8e26724" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/orloveFurniture/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/orloveFurniture/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order_form_customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_form_customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order_form_materials.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_form_materials.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order_form_pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_form_pay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order_form_sketch.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_form_sketch.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,7 +36,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/orloveFurniture/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-951">
+            <state relative-caret-position="285">
               <caret line="31" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
@@ -54,16 +49,16 @@
         <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="314">
-              <caret line="63" column="23" lean-forward="true" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+              <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order_create.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="order_create.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/order_create.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+            <state relative-caret-position="210">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -71,26 +66,8 @@
       <file leaf-file-name="order_form_materials.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/order_form_materials.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order_form_pay.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/order_form_pay.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="4" selection-start-column="4" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order_form_sketch.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/order_form_sketch.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            <state relative-caret-position="435">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -98,8 +75,17 @@
       <file leaf-file-name="order_form.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/order_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="420">
+              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="order_form_pay.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/order_form_pay.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -107,8 +93,17 @@
       <file leaf-file-name="order.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/order.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" selection-start-line="12" selection-end-line="24" selection-end-column="10" />
+            <state relative-caret-position="210">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="order_form_sketch.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/order_form_sketch.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -117,7 +112,7 @@
         <entry file="file://$PROJECT_DIR$/static/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="630">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
             </state>
           </provider>
         </entry>
@@ -125,8 +120,8 @@
       <file leaf-file-name="order_form_customer.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/order_form_customer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="25" column="85" selection-start-line="25" selection-start-column="77" selection-end-line="25" selection-end-column="85" />
+            <state relative-caret-position="345">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -187,7 +182,6 @@
         <option value="$PROJECT_DIR$/templates/materialsRequest.html" />
         <option value="$PROJECT_DIR$/templates/store.html" />
         <option value="$PROJECT_DIR$/templates/order_leaf.html" />
-        <option value="$PROJECT_DIR$/templates/order_form_sketch.html" />
         <option value="$PROJECT_DIR$/static/css/index.css" />
         <option value="$PROJECT_DIR$/templates/order_form_pay.html" />
         <option value="$PROJECT_DIR$/templates/order_form_materials.html" />
@@ -197,6 +191,7 @@
         <option value="$PROJECT_DIR$/templates/order_form.html" />
         <option value="$PROJECT_DIR$/templates/order_create.html" />
         <option value="$PROJECT_DIR$/templates/order.html" />
+        <option value="$PROJECT_DIR$/templates/order_form_sketch.html" />
       </list>
     </option>
   </component>
@@ -321,7 +316,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="25" width="1863" height="1055" extended-state="7" />
+    <frame x="1280" y="25" width="1863" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -330,9 +325,9 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49919486" weight="0.32910052" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7670424" visible="true" weight="0.1015873" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7670424" visible="true" weight="0.1015873" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49973163" weight="0.32910052" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20450886" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20450886" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" visible="true" weight="0.046698872" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49973163" weight="0.11534391" />
@@ -341,12 +336,29 @@
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="8" sideWeight="0.49973163" weight="0.32910052" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7546967" weight="0.21587302" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7546967" weight="0.21587302" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20450886" />
+      <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="manage.py@orlove" order="7" sideWeight="0.77831453" weight="0.42751324" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7670424" visible="true" weight="0.1015873" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.046698872" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5002684" side_tool="true" weight="0.32910052" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="8" sideWeight="0.49973163" weight="0.32910052" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49973163" weight="0.11534391" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49973163" weight="0.32910052" />
+      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49919486" weight="0.32910052" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -654,8 +666,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/materialsRequest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="36" column="51" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="51" />
+        <state relative-caret-position="360">
+          <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -676,48 +688,34 @@
     <entry file="file://$PROJECT_DIR$/static/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/order_form_pay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="4" selection-start-column="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/order_form_sketch.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/order_form_materials.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="435">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/order_form_customer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" column="85" selection-start-line="25" selection-start-column="77" selection-end-line="25" selection-end-column="85" />
+        <state relative-caret-position="345">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
-          <caret line="63" column="23" lean-forward="true" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+          <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/orloveFurniture/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-951">
+        <state relative-caret-position="285">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
@@ -725,24 +723,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/order_form.html">
+    <entry file="file://$PROJECT_DIR$/templates/order_form_pay.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="120">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/order.html">
+    <entry file="file://$PROJECT_DIR$/templates/order_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="24" selection-end-column="10" />
+        <state relative-caret-position="420">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/order_create.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        <state relative-caret-position="210">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/order.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/order_form_sketch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
