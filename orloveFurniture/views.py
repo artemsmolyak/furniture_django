@@ -68,7 +68,9 @@ def order(request, good_id):
 
         formMaterials = RequiredMaterialFormset(instance=obj)
 
-    return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials})
+
+    # objOrder для номера заказа
+    return render(request, "order_create.html", { "objOrder" : obj, "form": form, "formMaterials" : formMaterials})
 
 
 

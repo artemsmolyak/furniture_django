@@ -12,7 +12,14 @@
 
     <div class = "main-window" >
 
-        {% include "order_form.html" %}
+        <form method="POST">
+
+            {% include "order_form.html" %}
+
+            <button type="submit" class="btn btn-secondary" value="Save"> Сохранить </button>
+            <button type="submit" class="btn btn-secondary" value="Remove" > Удалить </button>
+
+        </form>
 
     </div>
 

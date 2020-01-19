@@ -10,7 +10,18 @@
 
 {% block content %}
 
-    {% include "order_form.html" %}
+    <div class = "main-window" >
 
+        <form  method="POST">
+
+            {% include "order_form.html" %}
+
+
+            <button type="submit" class="btn btn-secondary" value="Save"> Сохранить </button>
+            <button type="submit" class="btn btn-secondary" value="Remove" > Удалить </button>
+
+        </form>
+
+    </div>
 
 {% endblock %}

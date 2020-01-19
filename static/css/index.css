@@ -40,3 +40,12 @@ padding-rigth: 15px;
 }
 
 
+
+
+A:hover {
+    text-decoration: none !important; /* Отменяем подчеркивание у ссылки */
+}
+
+A {
+    text-decoration: none; /* Убирает подчеркивание для ссылок */
+}
