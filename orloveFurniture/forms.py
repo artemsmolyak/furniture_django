@@ -1,19 +1,23 @@
 from django import forms
-from .models import Order, RequiredMaterial
+from .models import Order, RequiredMaterial, DillerCatalog
 from djangoformsetjs.utils import formset_media_js
 
 class OrderForm(forms.ModelForm):
 
-    details = forms.CharField(widget=forms.Textarea)
-
+    cost = forms.IntegerField(required=False)
+    prepayment = forms.IntegerField(required=False)
 
     class Meta:
         model = Order
         exclude = ['date_created', 'idOrder']
-        widgets = {'surname': forms.TextInput(attrs={'size': 40}),
+        widgets = {
+                   'surname': forms.TextInput(attrs={'size': 40}),
                    'name': forms.TextInput(attrs={'size': 40}),
                    'patronymic': forms.TextInput(attrs={'size': 40}),
-                   'idOrder': forms.TextInput(attrs={'size': 40})}
+                   'address': forms.TextInput(attrs={'size': 40}),
+                   'phone': forms.TextInput(attrs={'size': 11}),
+                   'details': forms.Textarea(attrs={'cols': 40, 'rows': 5})
+                   }
 
     def __init__(self, *args, **kwargs):
         super(OrderForm, self).__init__(*args, **kwargs)
@@ -31,6 +35,13 @@ class RequiredMaterialForm(forms.ModelForm):
         fields = [ 'idMaterial', 'count', 'idOrder']
 
 
+
+
+class DillerForm(forms.ModelForm):
+
+    class Meta:
+        model = DillerCatalog
+        fields = ['name']
 
 
 

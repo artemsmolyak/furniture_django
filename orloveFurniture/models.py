@@ -5,8 +5,10 @@ from django.utils import timezone
 import uuid
 
 
+
 class StatusCatalog(models.Model):
     name = models.CharField(max_length=255)
+    orderliness = models.IntegerField()
 
     def __str__(self):
         return self.name
@@ -25,7 +27,16 @@ class Order(models.Model):
 
     status = models.ForeignKey(StatusCatalog, models.SET_NULL, blank=True, null=True)
 
+    address = models.CharField(max_length=255)
+
+    phone = models.CharField(max_length=11)
+
     details = models.TextField()
+
+
+    cost = models.IntegerField(blank=True, null=True, default = 0)
+
+    prepayment = models.IntegerField(blank=True, null=True, default = 0 )
 
 
     def save(self, *args, **kwargs):
@@ -53,6 +64,7 @@ class DillerCatalog(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
+    phone = models.CharField(max_length=11)
 
     def __str__(self):
         return self.name

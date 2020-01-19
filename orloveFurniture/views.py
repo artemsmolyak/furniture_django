@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Order, StatusCatalog, RequiredMaterial, Storage
-from .forms import OrderForm, RequiredMaterialForm
+from .models import Order, StatusCatalog, RequiredMaterial, Storage, DillerCatalog
+from .forms import OrderForm, DillerForm
 from django.forms.models import modelformset_factory, inlineformset_factory
-from django.db.models import Sum
+
+
+
 
 
 def orders(request):
@@ -11,7 +13,7 @@ def orders(request):
     ordersArray = []
     statusNameArray = []
 
-    statuses = StatusCatalog.objects.all()
+    statuses = StatusCatalog.objects.all().order_by("orderliness")
 
     for stat in statuses:
         order = Order.objects.filter(status = stat.id)
@@ -38,6 +40,7 @@ def order(request, good_id):
         orderForm = OrderForm(request.POST, instance=instance)
 
         if orderForm.is_valid():
+
             obj = orderForm.save()
 
             formMaterials = RequiredMaterialFormset(request.POST, instance=obj)
@@ -65,14 +68,13 @@ def order(request, good_id):
 
         formMaterials = RequiredMaterialFormset(instance=obj)
 
-    return render(request, "order_create.html", {"objOrder": obj, "form": form, "formMaterials" : formMaterials})
+    return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials})
 
 
 
 
 
 def order_create(request):
-
 
     RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
 
@@ -110,29 +112,6 @@ def order_create(request):
 
 
 
-def order_edit(request, good_id):
-    obj = get_object_or_404(Order, id=good_id)
-
-    form = OrderForm(request.POST or None, instance=obj)
-    context = {'form': form}
-
-    if form.is_valid():
-        obj = form.save(commit=False)
-
-        obj.save()
-
-        context = {'form': form}
-
-        return HttpResponse("Updated")
-
-    else:
-        return HttpResponse("NOT Updated")
-
-
-
-
-
-
 
 
 def store(request):
@@ -144,11 +123,28 @@ def store(request):
 
 
 
+
+
 def createRequestMaterials(request):
 
-    needMaterials = RequiredMaterial.objects.order_by('idMaterial')
+    Definitions = []
 
+    for needMaterial in RequiredMaterial.objects.all().order_by('idMaterial'):
+        for havematerial in  Storage.objects.all().order_by('idMaterial'):
+            if needMaterial.idMaterial == havematerial.idMaterial:
 
-    haveMaterials = Storage.objects.all().order_by('idMaterial')
+                Definition = {}
+                Definition["name"] = needMaterial.idMaterial.name
+                Definition["needMaterial"] = needMaterial.count
+                Definition["havematerial"] = havematerial.count
+                diff = (needMaterial.count - havematerial.count)
+                if diff < 0:
+                    Definition["toOrder"] = 0
+                else:
+                    Definition["toOrder"] = needMaterial.count - havematerial.count
 
-    return render(request, "materialsRequest.html", {"needMaterials" : needMaterials, "haveMaterials" : haveMaterials})
+                Definitions.append(Definition)
+
+    dillers = DillerCatalog.objects.all()
+
+    return render(request, "materialsRequest.html", { "Definitions" : Definitions, 'dillers' : dillers })

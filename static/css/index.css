@@ -23,15 +23,15 @@
     margin: 10px;
 }
 
-b{
-     color: black;
-}
-
 
 .main-window{
     margin: 70px;
 }
 
+
+body {
+    background-color: #ECEFF1;
+}
 
 /* для расстояние между элементами главного меню */
 li{

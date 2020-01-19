@@ -8,30 +8,67 @@
 {% endblock %}
 
 
+
+
+
 {% block content %}
 
 
-      <div class = "main-window">
+    <div class = "main-window">
 
-         <table class="table table-bordered" id = "form_set">
+        <H4>Заявка на материалы </H4>
+
+
+        <div class="form-group">
+
+            <p>Поставщику:</p>
+
+            <select id="id_bd_month" name="bd_month" class="selectpicker" data-width="100%" data-size="16">
+
+            {% for diller in dillers %}
+                <option value={{ diller.name }}>{{ diller.name }}</option>
+            {% endfor %}
+
+            </select>
+
+        </div>
+
+
+        <table class="table table-bordered bg-light" id = "form_set">
             <thead>
             <tr>
-                <th scope="col">Нужно</th>
-                <th scope="col">Количество</th>
-
+                <th scope="col">Наименование</th>
+                <th scope="col">Нужно для заказа</th>
+                <th scope="col">Есть на складе</th>
+                <th scope="col">Недостаток</th>
+                <th scope="col">Заказать</th>
             </tr>
             </thead>
             <tbody>
 
-            {% for material in needMaterials %}
+            {% for Definition in Definitions %}
                 <tr>
-                    <td>
-                        {{  material.idMaterial }}
-                    </td>
-                    <td>
+                        <td>
+                            {{  Definition.name }}
+                        </td>
 
-                        {{  material.count }}
-                    </td>
+                        <td>
+                            {{  Definition.needMaterial }}
+                        </td>
+
+                        <td>
+                            {{  Definition.havematerial }}
+                        </td>
+
+                        <td>
+                            {{ Definition.toOrder }}
+                        </td>
+
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            </div>
+                        </td>
 
                 </tr>
             {% endfor %}
@@ -41,35 +78,8 @@
         </table>
 
 
+    <button type="button" class="btn btn-secondary">Заказать</button>
 
-        <table class="table table-bordered" id = "form_set">
-            <thead>
-            <tr>
-                <th scope="col">Есть</th>
-                <th scope="col">Количество</th>
-
-            </tr>
-            </thead>
-            <tbody>
-
-            {% for material in haveMaterials %}
-                <tr>
-                    <td>
-                        {{  material.idMaterial }}
-                    </td>
-                    <td>
-
-                        {{  material.count }}
-                    </td>
-
-                </tr>
-            {% endfor %}
-
-            </tbody>
-
-        </table>
-
-
-      </div>
+    </div>
 
 {% endblock %}
