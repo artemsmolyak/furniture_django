@@ -3,11 +3,11 @@ from django.http import HttpResponse
 from .models import Order, StatusCatalog, RequiredMaterial, Storage, DillerCatalog
 from .forms import OrderForm, DillerForm
 from django.forms.models import modelformset_factory, inlineformset_factory
+from django.contrib.auth.decorators import login_required
 
 
 
-
-
+@login_required
 def orders(request):
 
     ordersArray = []
@@ -26,7 +26,7 @@ def orders(request):
 
 
 
-
+@login_required
 def order(request, good_id):
 
     obj = get_object_or_404(Order, id=good_id)
@@ -75,7 +75,7 @@ def order(request, good_id):
 
 
 
-
+@login_required
 def order_create(request):
 
     RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
@@ -115,7 +115,7 @@ def order_create(request):
 
 
 
-
+@login_required
 def store(request):
 
     materialsInStore = Storage.objects.all()
@@ -126,7 +126,7 @@ def store(request):
 
 
 
-
+@login_required
 def createRequestMaterials(request):
 
     Definitions = []

@@ -1,0 +1,36 @@
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href= "{% static "css/index.css" %}" >
+{% endblock %}
+
+{% block title %}
+<h2>   </h2>
+{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <p>вы уже вошли </p>
+    {% else %}
+
+
+
+ <center>
+        <div class="container border padding" >
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="hidden" name = "next" value = "{{ next }}">
+                <input type = "submit" value="Войти">
+            </form>
+        </div>
+  </center>
+
+
+    {% endif %}
+
+
+
+{% endblock %}

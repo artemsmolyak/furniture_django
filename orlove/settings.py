@@ -130,3 +130,6 @@ TEMPLATES_DIRS = (os.path.join(BASE_DIR, 'templates'))
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'index'
