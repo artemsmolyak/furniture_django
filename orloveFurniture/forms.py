@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order, RequiredMaterial, DillerCatalog
+from .models import Order, RequiredMaterial, DillerCatalog, RequiredOperation
 from djangoformsetjs.utils import formset_media_js
 
 class OrderForm(forms.ModelForm):
@@ -28,7 +28,6 @@ class OrderForm(forms.ModelForm):
 
 class RequiredMaterialForm(forms.ModelForm):
 
-    count = forms.IntegerField()
 
     class Meta:
         model = RequiredMaterial
@@ -45,6 +44,10 @@ class DillerForm(forms.ModelForm):
 
 
 
+class RequiredOperationForm(forms.ModelForm):
 
+    class Meta:
+        model = RequiredOperation
+        fields = ['idOrder', 'idOperation', 'idWorker', 'cost']
 
 

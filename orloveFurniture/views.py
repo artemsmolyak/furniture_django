@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Order, StatusCatalog, RequiredMaterial, Storage, DillerCatalog
+from .models import Order, StatusCatalog, RequiredMaterial, Storage, DillerCatalog, RequiredOperation
 from .forms import OrderForm, DillerForm
 from django.forms.models import modelformset_factory, inlineformset_factory
 from django.contrib.auth.decorators import login_required
@@ -34,43 +34,60 @@ def order(request, good_id):
 
     RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
 
+    RequiredOperationFormset = inlineformset_factory(Order, RequiredOperation, fields=('idOrder', 'idOperation', 'idWorker', 'cost',), can_delete=True, extra=1)
+
     if request.method == "POST":
 
         instance = get_object_or_404(Order, id=good_id)
         orderForm = OrderForm(request.POST, instance=instance)
 
-        if orderForm.is_valid():
+        formMaterials = RequiredMaterialFormset(request.POST, instance=obj)
+        formOperations = RequiredOperationFormset(request.POST, instance=obj)
+
+        if orderForm.is_valid() and formMaterials.is_valid() and formOperations.is_valid():
 
             obj = orderForm.save()
 
-            formMaterials = RequiredMaterialFormset(request.POST, instance=obj)
+            instance = RequiredMaterial.objects.filter(idOrder=obj)
+            instance.delete()
 
-            if formMaterials.is_valid():
+            formMaterials.save(commit=False)
 
-                instance = RequiredMaterial.objects.filter(idOrder=obj)
-                instance .delete()
-
-                formMaterials.save(commit=False)
-
-                for form in formMaterials:
-                    if form['count'].value():
-                        choice = form.save(commit=False)
-                        choice.idOrder = obj
-                        choice.save()
+            for form in formMaterials:
+                if form['count'].value():
+                    choice = form.save(commit=False)
+                    choice.idOrder = obj
+                    choice.save()
 
 
-                return orders(request)
+            #instance = RequiredOperation.objects.filter(idOrder=obj)
+            #instance.delete()
 
-            return render(request, "order_create.html", {"objOrder": instance, "form": form, "formMaterials": formMaterials})
+            formOperations.save(commit=False)
+
+            for form in formOperations.deleted_objects:
+                form.delete()
+
+            for form in formOperations:
+                if form['cost'].value() != 0 and form['cost'].value():
+                    choice = form.save(commit=False)
+                    choice.idOrder = obj
+                    choice.save()
+
+            return orders(request)
+
+        return render(request, "order_create.html", {"objOrder": instance, "form": form, "formMaterials": formMaterials, "formOperations" : formOperations})
 
 
     else:
 
         formMaterials = RequiredMaterialFormset(instance=obj)
 
+        formOperations = RequiredOperationFormset(instance=obj)
+
 
     # objOrder для номера заказа
-    return render(request, "order_create.html", { "objOrder" : obj, "form": form, "formMaterials" : formMaterials})
+    return render(request, "order_create.html", { "objOrder" : obj, "form": form, "formMaterials" : formMaterials, "formOperations" : formOperations})
 
 
 
@@ -80,6 +97,8 @@ def order_create(request):
 
     RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
 
+    RequiredOperationFormset = inlineformset_factory(Order, RequiredOperation, fields=('idOrder', 'idOperation', 'idWorker', 'cost',), can_delete=True, extra=1)
+
 
     if request.method == "POST":
 
@@ -87,21 +106,31 @@ def order_create(request):
 
         formMaterials = RequiredMaterialFormset(request.POST)
 
-        if orderform.is_valid():
+        formOperations = RequiredOperationFormset(request.POST)
+
+        if orderform.is_valid() and formMaterials.is_valid() and  formOperations.is_valid():
+
             orderObj = orderform.save()
 
-            if formMaterials.is_valid():
-                formMaterials.save(commit=False)
-                for form in formMaterials:
 
-                    if form['count'].value():
-                        choice = form.save(commit=False)
-                        choice.idOrder = orderObj
-                        choice.save()
+            formMaterials.save(commit=False)
+            for form in formMaterials:
+                if form['count'].value():
+                    choice = form.save(commit=False)
+                    choice.idOrder = orderObj
+                    choice.save()
 
-                return orders(request)
+            formOperations.save(commit=False)
+            for form in formOperations:
+                if form['cost'].value():
+                    choice = form.save(commit=False)
+                    choice.idOrder = orderObj
+                    choice.save()
 
-        return render(request, "order_create.html", {"form": orderform, "formMaterials": formMaterials})
+            return orders(request)
+
+
+        return render(request, "order_create.html", {"form": orderform, "formMaterials": formMaterials, "formOperations" : formOperations})
 
 
 
@@ -109,7 +138,9 @@ def order_create(request):
 
     formMaterials = RequiredMaterialFormset(queryset=RequiredMaterial.objects.none())
 
-    return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials})
+    formOperations = RequiredOperationFormset(queryset=RequiredOperation.objects.none())
+
+    return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials, "formOperations" : formOperations})
 
 
 

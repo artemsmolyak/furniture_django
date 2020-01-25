@@ -46,14 +46,45 @@ class Order(models.Model):
         return self.name + " " + self.surname + ": " + self.details
 
 
+class PositionCatalog(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+class WorkerCatalog(models.Model):
+    date_created = models.DateTimeField
+
+    name = models.CharField(max_length=255)
+    surname = models.CharField(max_length=255)
+    patronymic = models.CharField(max_length=255)
+
+    position = models.ManyToManyField(PositionCatalog)
+
+    def __str__(self):
+        return self.name + " " + self.patronymic
+
+
+
+class OperationCatalog(models.Model):
+    date_created = models.DateTimeField
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
 
 
 class RequiredOperation(models.Model):
 
-    idOrder = models.IntegerField()
-    idOperation = models.IntegerField()
-    idWorker = models.IntegerField()
+    id = models.AutoField(primary_key=True)
 
+    idOrder = models.ForeignKey(Order, models.SET_NULL, blank=True, null=True)
+
+    idOperation =  models.ForeignKey(OperationCatalog,  blank=False, null=False)
+    idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False)
+    cost = models.IntegerField()
 
 
 
@@ -87,41 +118,10 @@ class RequiredMaterial(models.Model):
 
     idOrder = models.ForeignKey(Order, models.SET_NULL, blank=True, null=True)
 
-    idMaterial = models.ForeignKey(MaterialCatalog, models.SET_NULL, blank=True, null=True)
+    idMaterial = models.ForeignKey(MaterialCatalog, blank=False, null=False)
 
     count = models.IntegerField()
 
-
-
-class OperationCatalog(models.Model):
-    date_created = models.DateTimeField
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-
-
-
-
-class PositionCatalog(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-
-class WorkerCatalog(models.Model):
-    date_created = models.DateTimeField
-
-    name = models.CharField(max_length=255)
-    surname = models.CharField(max_length=255)
-    patronymic = models.CharField(max_length=255)
-
-    position = models.ManyToManyField(PositionCatalog)
-
-    def __str__(self):
-        return self.name + " " + self.patronymic
 
 
 

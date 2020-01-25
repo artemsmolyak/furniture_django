@@ -1,0 +1,70 @@
+{% load static %}
+
+
+<br>
+
+<table class="table table-bordered" id = "form_set_operation">
+    <thead>
+    <tr>
+        <th scope="col">Операция</th>
+        <th scope="col">Стоимость</th>
+        <th scope="col">Исполнитель</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    {{ formOperations.management_form }}
+
+    {% for formOperation in formOperations %}
+
+        {{ formOperation.management_form }}
+
+        {{ formOperation.errors }}
+
+        {% for error in formOperation.non_field_errors %}
+            {{error}}
+        {% endfor %}
+
+
+
+        {% for hidden in formOperation.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+
+            <tr class = "formset_row_operation_{{ formOperations.prefix }}">
+                <td> {{ formOperation.idOperation }}</td>
+                <td> {{ formOperation.cost }}</td>
+                <td> {{ formOperation.idWorker }}</td>
+                <td> {{ formOperation.errors }}</td>
+            </tr>
+
+
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+
+
+<script type="text/javascript">
+
+ $('.formset_row_operation_{{ formOperations.prefix }}').formset({
+        addText: '+',
+        deleteText: 'x',
+        prefix: '{{ formOperations.prefix }}',
+        animateForms: true
+    });
+
+
+</script>
+
+
+
+
+

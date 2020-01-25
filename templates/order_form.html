@@ -13,26 +13,36 @@
             <div class = "col-6">
 
                 <ul class="nav nav-tabs">
-                    <li class="nav-item"><a class="nav-link active text-secondary" data-toggle="tab" href="#home">Материалы</a></li>
-                    <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#pay">Оплата</a></li>
+
+                    <li class="nav-item"><a class="nav-link text-secondary active" data-toggle="tab" href="#menu2">Операции</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary " data-toggle="tab" href="#pay">Оплата</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#home">Материалы</a></li>
                     <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#menu1">Эскизы</a></li>
-                    <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#menu2">Операции</a></li>
+
                 </ul>
 
 
 
                 <div class="tab-content">
 
-                    <div id="home" class="tab-pane active fade show">
+                    <div id="menu2" class="tab-pane fade active show">
 
-                        {% include "order_form_materials.html"  %}
+                        {% include "order_form_operations.html"  %}
 
                     </div>
 
 
-                    <div id="pay" class="tab-pane fade">
+                     <div id="pay" class="tab-pane fade">
 
                         {% include "order_form_pay.html"  %}
+
+                    </div>
+
+
+
+                    <div id="home" class="tab-pane fade active">
+
+                        {% include "order_form_materials.html"  %}
 
                     </div>
 
@@ -41,13 +51,6 @@
                     <div id="menu1" class="tab-pane fade">
 
                         {% include "order_form_sketch.html"  %}
-
-                    </div>
-
-                    <div id="menu2" class="tab-pane fade">
-
-                        <h3>Menu 2</h3>
-                        <p>Some content in menu 2.</p>
 
                     </div>
 
