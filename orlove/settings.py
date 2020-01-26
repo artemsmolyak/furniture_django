@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'orloveFurniture',
-    'dynamic_formsets',
     'jquery',
     'djangoformsetjs',
 

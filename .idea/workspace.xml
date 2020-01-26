@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01ef6b62-f271-40c5-bbac-120cf8e26724" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/orloveFurniture/migrations/0016_auto_20200126_1535.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orlove/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/orlove/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orloveFurniture/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/orloveFurniture/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orloveFurniture/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/orloveFurniture/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order_form_materials.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_form_materials.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order_form_operations.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order_form_operations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orlove/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/orlove/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order_form_materials.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="order_form_materials.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/order_form_materials.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+            <state relative-caret-position="248">
+              <caret line="59" column="21" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -107,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/orlove/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+            <state relative-caret-position="332">
+              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -197,7 +190,6 @@
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/static/css/index.css" />
         <option value="$PROJECT_DIR$/templates/registration/login.html" />
-        <option value="$PROJECT_DIR$/orlove/settings.py" />
         <option value="$PROJECT_DIR$/templates/registration/logout.html" />
         <option value="$PROJECT_DIR$/orloveFurniture/urls.py" />
         <option value="$PROJECT_DIR$/templates/order_form_customer.html" />
@@ -210,6 +202,7 @@
         <option value="$PROJECT_DIR$/orloveFurniture/views.py" />
         <option value="$PROJECT_DIR$/templates/order_form.html" />
         <option value="$PROJECT_DIR$/templates/order_form_materials.html" />
+        <option value="$PROJECT_DIR$/orlove/settings.py" />
       </list>
     </option>
   </component>
@@ -339,14 +332,14 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49919486" weight="0.32910052" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49973163" weight="0.32910052" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17552336" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17552336" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" visible="true" weight="0.031669352" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49973163" weight="0.11534391" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="8" sideWeight="0.49973163" weight="0.32910052" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.7546967" visible="true" weight="0.31428573" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7546967" visible="true" weight="0.31428573" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -701,13 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/orlove/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/orlove/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -758,8 +744,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/order_form_materials.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+        <state relative-caret-position="248">
+          <caret line="59" column="21" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/orlove/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
         </state>
       </provider>
     </entry>
