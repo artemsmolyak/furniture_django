@@ -62,6 +62,12 @@
     });
 
 
+   $('#delete-row').click(function() {
+          var form_idx = $('#id_requiredoperation_set-TOTAL_FORMS').val();
+        $('#id_requiredoperation_set-TOTAL_FORMS').val(parseInt(form_idx) - 1);
+    });
+
+
 </script>
 
 

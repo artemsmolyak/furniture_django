@@ -51,6 +51,7 @@ def order(request, good_id):
             instance = RequiredMaterial.objects.filter(idOrder=obj)
             instance.delete()
 
+
             formMaterials.save(commit=False)
 
             for form in formMaterials:
@@ -60,8 +61,8 @@ def order(request, good_id):
                     choice.save()
 
 
-            #instance = RequiredOperation.objects.filter(idOrder=obj)
-            #instance.delete()
+            instance = RequiredOperation.objects.filter(idOrder=obj)
+            instance.delete()
 
             formOperations.save(commit=False)
 

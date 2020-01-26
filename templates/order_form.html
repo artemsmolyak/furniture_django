@@ -14,10 +14,10 @@
 
                 <ul class="nav nav-tabs">
 
-                    <li class="nav-item"><a class="nav-link text-secondary active" data-toggle="tab" href="#menu2">Операции</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary active" data-toggle="tab" href="#operations">Операции</a></li>
                     <li class="nav-item"><a class="nav-link text-secondary " data-toggle="tab" href="#pay">Оплата</a></li>
-                    <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#home">Материалы</a></li>
-                    <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#menu1">Эскизы</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#materials">Материалы</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#sketch">Эскизы</a></li>
 
                 </ul>
 
@@ -25,7 +25,7 @@
 
                 <div class="tab-content">
 
-                    <div id="menu2" class="tab-pane fade active show">
+                    <div id="operations" class="tab-pane fade active show">
 
                         {% include "order_form_operations.html"  %}
 
@@ -40,7 +40,7 @@
 
 
 
-                    <div id="home" class="tab-pane fade active">
+                    <div id="materials" class="tab-pane fade active">
 
                         {% include "order_form_materials.html"  %}
 
@@ -48,7 +48,7 @@
 
 
 
-                    <div id="menu1" class="tab-pane fade">
+                    <div id="sketch" class="tab-pane fade">
 
                         {% include "order_form_sketch.html"  %}
 

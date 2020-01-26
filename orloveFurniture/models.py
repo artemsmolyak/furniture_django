@@ -80,11 +80,14 @@ class RequiredOperation(models.Model):
 
     id = models.AutoField(primary_key=True)
 
-    idOrder = models.ForeignKey(Order, models.SET_NULL, blank=True, null=True)
+    idOrder = models.ForeignKey(Order, blank=False, null=False)
 
     idOperation =  models.ForeignKey(OperationCatalog,  blank=False, null=False)
     idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False)
     cost = models.IntegerField()
+
+    def save(self, *args, **kwargs):
+        super(RequiredOperation, self).save(*args, **kwargs)
 
 
 
@@ -116,11 +119,16 @@ class RequiredMaterial(models.Model):
 
     id = models.AutoField(primary_key=True)
 
-    idOrder = models.ForeignKey(Order, models.SET_NULL, blank=True, null=True)
+    idOrder = models.ForeignKey(Order, blank=False, null=False)
 
     idMaterial = models.ForeignKey(MaterialCatalog, blank=False, null=False)
 
     count = models.IntegerField()
+
+    def save(self, *args, **kwargs):
+        super(RequiredMaterial, self).save(*args, **kwargs)
+
+
 
 
 
