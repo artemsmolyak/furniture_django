@@ -27,6 +27,27 @@
             </div>
 
 
+            <div class="form-group">
+                {{ form.nameOrder.errors }}
+
+                 <label for="{{ form.nameOrder.id_for_label }}">Наименование заказа</label><br>
+
+                {{ form.nameOrder }}
+            </div>
+
+
+
+            <div class="form-group">
+                {{ form.nameContract.errors }}
+
+                 <label for="{{ form.nameContract.id_for_label }}">Договор</label><br>
+
+                {{ form.nameContract }}
+            </div>
+
+
+
+
 
             <div class="form-group">
                 {{ form.surname.errors }}
@@ -88,6 +109,15 @@
 
             </div>
 
+
+            <div class="form-group">
+                {{ form.trelloLink.errors }}
+
+                <label for="{{ form.trelloLink.id_for_label }}">Ссылка на трелло</label><br>
+
+                {{ form.trelloLink }}
+
+            </div>
 
             <div class="form-group">
 

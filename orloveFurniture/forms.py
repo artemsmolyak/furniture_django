@@ -1,6 +1,6 @@
 from django import forms
 from .models import Order, RequiredMaterial, DillerCatalog, RequiredOperation
-from djangoformsetjs.utils import formset_media_js
+
 
 class OrderForm(forms.ModelForm):
 
@@ -14,8 +14,15 @@ class OrderForm(forms.ModelForm):
                    'surname': forms.TextInput(attrs={'size': 40}),
                    'name': forms.TextInput(attrs={'size': 40}),
                    'patronymic': forms.TextInput(attrs={'size': 40}),
+
+                   'nameOrder': forms.TextInput(attrs={'size': 40}),
+                   'nameContract': forms.TextInput(attrs={'size': 40}),
+
                    'address': forms.TextInput(attrs={'size': 40}),
                    'phone': forms.TextInput(attrs={'size': 11}),
+
+                   'trelloLink': forms.TextInput(attrs={'size': 40}),
+
                    'details': forms.Textarea(attrs={'cols': 40, 'rows': 5})
                    }
 
