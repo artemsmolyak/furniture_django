@@ -14,6 +14,9 @@ urlpatterns = [
     url(r'^order/(?P<good_id>\d+)/$', views.order, name='order'),
 
     url(r'^store/$', views.store, name='store'),
+
     url(r'^requestMaterials/$', views.createRequestMaterials, name='createRequestMaterials'),
+
+    url(r'^reportCompletedApplication/$', views.createReportCompletedApplication, name='reportCompletedApplication'),
 
 ]

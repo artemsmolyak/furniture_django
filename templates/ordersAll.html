@@ -17,7 +17,8 @@
 
                 {% for status in statusNameArray %}
 
-                    <div class = "col-3">
+                    <! -- изменить при изменении количества разделов на главной странице -->
+                    <div class = "col-2">
                         <div class="order_list">
                             <div class="card-header text-center text-white bg-secondary">{{ status }} </div>
                         </div>
@@ -36,7 +37,7 @@
                 {% for orders in ordersArray %}
 
                     <! -- изменить при изменении количества разделов на главной странице -->
-                    <div class = "col-3">
+                    <div class = "col-2">
                         {% include "order_list.html"  %}
                     </div>
 

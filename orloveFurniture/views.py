@@ -269,3 +269,9 @@ def createRequestMaterials(request):
     dillers = DillerCatalog.objects.all()
 
     return render(request, "materialsRequest.html", { "Definitions" : Definitions, 'dillers' : dillers })
+
+
+
+
+def createReportCompletedApplication(request):
+    return render(request, "report_completed_application.html")

@@ -1,0 +1,50 @@
+[
+  {
+    "model": "orloveFurniture.StatusCatalog",
+    "pk": 1,
+    "fields": {
+      "name": "Замер",
+      "orderliness": "1"
+    }
+  },
+  {
+    "model": "orloveFurniture.StatusCatalog",
+    "pk": 2,
+    "fields": {
+      "name": "Рассчет цен",
+      "orderliness": "2"
+    }
+  },
+   {
+    "model": "orloveFurniture.StatusCatalog",
+    "pk": 3,
+    "fields": {
+      "name": "В работу",
+      "orderliness": "3"
+    }
+  },
+  {
+    "model": "orloveFurniture.StatusCatalog",
+    "pk": 4,
+    "fields": {
+      "name": "Заключен договор",
+      "orderliness": "4"
+    }
+  },
+  {
+    "model": "orloveFurniture.StatusCatalog",
+    "pk": 5,
+    "fields": {
+      "name": "Выполнено",
+      "orderliness": "5"
+    }
+  },
+   {
+    "model": "orloveFurniture.StatusCatalog",
+    "pk": 6,
+    "fields": {
+      "name": "Доставка",
+      "orderliness": "6"
+    }
+  }
+]
