@@ -71,27 +71,133 @@ class WorkerCatalog(models.Model):
 
 
 
-class OperationCatalog(models.Model):
+
+# class TypeOperationCatalog(models.Model):
+#     date_created = models.DateTimeField
+#
+#     name = models.CharField(max_length=255)
+#
+#     def __str__(self):
+#         return self.name
+
+
+
+
+# class OperationCatalog(models.Model):
+#     date_created = models.DateTimeField
+#
+#     name = models.CharField(max_length=255)
+#     #idTypeOperation = models.ForeignKey(TypeOperationCatalog, blank=False, null=False, on_delete=models.PROTECT)
+#
+#
+#     def __str__(self):
+#         return self.name
+
+
+
+# class RequiredOperation(models.Model):
+#
+#     id = models.AutoField(primary_key=True)
+#
+#     idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.PROTECT)
+#
+#     idOperation =  models.ForeignKey(OperationCatalog,  blank=False, null=False, on_delete=models.PROTECT)
+#     idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
+#
+#     cost = models.IntegerField()
+#
+#     def save(self, *args, **kwargs):
+#         super(RequiredOperation, self).save(*args, **kwargs)
+
+
+
+
+class OperationProjectCatalog(models.Model):
     date_created = models.DateTimeField
+
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
 
 
-
-class RequiredOperation(models.Model):
+class RequiredOperationProject(models.Model):
 
     id = models.AutoField(primary_key=True)
 
     idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.PROTECT)
 
-    idOperation =  models.ForeignKey(OperationCatalog,  blank=False, null=False, on_delete=models.PROTECT)
+    idOperation =  models.ForeignKey(OperationProjectCatalog,  blank=False, null=False, on_delete=models.PROTECT)
     idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
+
     cost = models.IntegerField()
 
+    isDone = models.BooleanField()
+
+    isDoneDate = models.DateField()
+
     def save(self, *args, **kwargs):
-        super(RequiredOperation, self).save(*args, **kwargs)
+        super(RequiredOperationProject, self).save(*args, **kwargs)
+
+
+
+class OperationManufactoryCatalog(models.Model):
+    date_created = models.DateTimeField
+
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+class RequiredOperationManufactory(models.Model):
+    id = models.AutoField(primary_key=True)
+
+    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.PROTECT)
+
+    idOperation = models.ForeignKey(OperationManufactoryCatalog, blank=False, null=False, on_delete=models.PROTECT)
+    idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
+
+    cost = models.IntegerField()
+
+    isDone = models.BooleanField()
+
+    isDoneDate = models.DateField()
+
+    def save(self, *args, **kwargs):
+        super(RequiredOperationManufactory, self).save(*args, **kwargs)
+
+
+
+class OperationContractorCatalog(models.Model):
+    date_created = models.DateTimeField
+
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+class RequiredOperationContractor(models.Model):
+
+    id = models.AutoField(primary_key=True)
+
+    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.PROTECT)
+
+    idOperation = models.ForeignKey(OperationContractorCatalog, blank=False, null=False, on_delete=models.PROTECT)
+    idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
+
+    cost = models.IntegerField()
+
+    isDone = models.BooleanField()
+
+    isDoneDate = models.DateField()
+
+    def save(self, *args, **kwargs):
+        super(RequiredOperationContractor, self).save(*args, **kwargs)
+
+
+
 
 
 

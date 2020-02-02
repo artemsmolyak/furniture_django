@@ -2,6 +2,7 @@
 
 
 <br>
+<h4>Подрядчики</h4>
 
 <table class="table table-bordered" id = "form_set_operation">
     <thead>
@@ -9,15 +10,17 @@
         <th scope="col">Операция</th>
         <th scope="col">Стоимость</th>
         <th scope="col">Исполнитель</th>
+        <th scope="col">Исполнено</th>
+        <th scope="col">Дата исполнения</th>
         <th scope="col"></th>
     </tr>
     </thead>
 
     <tbody>
 
-    {{ formProjectOperations.management_form }}
+    {{ formContractorOperations.management_form }}
 
-    {% for formOperation in formProjectOperations %}
+    {% for formOperation in formContractorOperations %}
 
         {{ formOperation.errors }}
 
@@ -31,10 +34,12 @@
         {% endfor %}
 
 
-            <tr class = "formset_row_operation_{{ formProjectOperations.prefix }}">
+            <tr class = "formset_row_operation_{{ formContractorOperations.prefix }}">
                 <td> {{ formOperation.idOperation }}</td>
                 <td> {{ formOperation.cost }}</td>
                 <td> {{ formOperation.idWorker }}</td>
+                <td> {{ formOperation.isDone }}</td>
+                <td> {{ formOperation.isDoneDate }}</td>
                 <td> {{ formOperation.errors }}</td>
             </tr>
 
@@ -45,16 +50,19 @@
 </table>
 
 
+
+
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="{% static 'js/jquery.formset.js' %}"></script>
 
 
 <script type="text/javascript">
 
- $('.formset_row_operation_{{ formProjectOperations.prefix }}').formset({
+ $('.formset_row_operation_{{ formContractorOperations.prefix }}').formset({
         addText: '+',
         deleteText: 'x',
-        prefix: '{{ formProjectOperations.prefix }}',
+        prefix: '{{ formContractorOperations.prefix }}',
         animateForms: true
     });
 

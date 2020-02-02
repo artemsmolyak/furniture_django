@@ -1,5 +1,6 @@
 from django import forms
-from .models import Order, RequiredMaterial, DillerCatalog, RequiredOperation
+from .models import Order, RequiredMaterial, DillerCatalog
+from .models import RequiredOperationProject, RequiredOperationManufactory, RequiredOperationContractor
 
 
 class OrderForm(forms.ModelForm):
@@ -51,10 +52,33 @@ class DillerForm(forms.ModelForm):
 
 
 
-class RequiredOperationForm(forms.ModelForm):
+class RequiredOperationProjectForm(forms.ModelForm):
 
     class Meta:
-        model = RequiredOperation
-        fields = ['idOrder', 'idOperation', 'idWorker', 'cost']
+        model = RequiredOperationProject
+        fields = ['idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate']
+        widgets = {
+            'isDoneDate': forms.widgets.DateInput(attrs={'type': 'date'})
+        }
 
 
+
+
+class RequiredOperationManufactoryForm(forms.ModelForm):
+
+    class Meta:
+        model = RequiredOperationManufactory
+        fields = ['idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate']
+        widgets = {
+            'isDoneDate': forms.widgets.DateInput(attrs={'type': 'date'})
+        }
+
+
+class RequiredOperationContractorForm(forms.ModelForm):
+
+    class Meta:
+        model = RequiredOperationContractor
+        fields = ['idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate']
+        widgets = {
+            'isDoneDate': forms.widgets.DateInput(attrs={'type': 'date'})
+        }

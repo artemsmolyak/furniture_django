@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Order, StatusCatalog, RequiredMaterial, Storage, DillerCatalog, RequiredOperation
+from .models import Order, StatusCatalog, RequiredMaterial, Storage, DillerCatalog, RequiredOperationProject, RequiredOperationManufactory,RequiredOperationContractor
 from .forms import OrderForm, DillerForm
 from django.forms.models import modelformset_factory, inlineformset_factory
 from django.contrib.auth.decorators import login_required
@@ -34,7 +34,12 @@ def order(request, good_id):
 
     RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
 
-    RequiredOperationFormset = inlineformset_factory(Order, RequiredOperation, fields=('idOrder', 'idOperation', 'idWorker', 'cost',), can_delete=True, extra=1)
+
+    RequiredOperationProjectFormset = inlineformset_factory(Order, RequiredOperationProject, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
+    RequiredOperationManufactoryFormset = inlineformset_factory(Order, RequiredOperationManufactory, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
+    RequiredOperationContractorFormset = inlineformset_factory(Order, RequiredOperationContractor, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
+
+
 
     if request.method == "POST":
 
@@ -42,9 +47,12 @@ def order(request, good_id):
         orderForm = OrderForm(request.POST, instance=instance)
 
         formMaterials = RequiredMaterialFormset(request.POST, instance=obj)
-        formOperations = RequiredOperationFormset(request.POST, instance=obj)
 
-        if orderForm.is_valid() and formMaterials.is_valid() and formOperations.is_valid():
+        formProjectOperations = RequiredOperationProjectFormset(request.POST, instance=obj)
+        formManufactoryOperations = RequiredOperationManufactoryFormset(request.POST, instance=obj)
+        formContractorOperations = RequiredOperationContractorFormset(request.POST, instance=obj)
+
+        if orderForm.is_valid() and formMaterials.is_valid() and formProjectOperations.is_valid() and formManufactoryOperations.is_valid() and formContractorOperations.is_valid():
 
             obj = orderForm.save()
 
@@ -61,15 +69,15 @@ def order(request, good_id):
                     choice.save()
 
 
-            instance = RequiredOperation.objects.filter(idOrder=obj)
+            instance = RequiredOperationProject.objects.filter(idOrder=obj)
             instance.delete()
 
-            formOperations.save(commit=False)
+            formProjectOperations.save(commit=False)
 
-            for form in formOperations.deleted_objects:
+            for form in formProjectOperations.deleted_objects:
                 form.delete()
 
-            for form in formOperations:
+            for form in formProjectOperations:
                 if form['cost'].value() != 0 and form['cost'].value():
                     choice = form.save(commit=False)
                     choice.idOrder = obj
@@ -77,18 +85,31 @@ def order(request, good_id):
 
             return orders(request)
 
-        return render(request, "order_create.html", {"objOrder": instance, "form": form, "formMaterials": formMaterials, "formOperations" : formOperations})
+        return render(request, "order_create.html", {"objOrder": instance, "form": form,
+                                                     "formMaterials": formMaterials,
+                                                     "formProjectOperations" : formProjectOperations,
+                                                     "formManufactoryOperations" : formManufactoryOperations,
+                                                     "formContractorOperations" : formContractorOperations
+                                                     })
 
 
     else:
 
         formMaterials = RequiredMaterialFormset(instance=obj)
 
-        formOperations = RequiredOperationFormset(instance=obj)
+        #formOperations = RequiredOperationFormset(instance=obj)
+
+        formProjectOperations = RequiredOperationProjectFormset(instance=obj)
+        formManufactoryOperations = RequiredOperationManufactoryFormset(instance=obj)
+        formContractorOperations = RequiredOperationContractorFormset(instance=obj)
 
 
     # objOrder для номера заказа
-    return render(request, "order_create.html", { "objOrder" : obj, "form": form, "formMaterials" : formMaterials, "formOperations" : formOperations})
+    return render(request, "order_create.html", { "objOrder" : obj, "form": form,
+                                                  "formMaterials" : formMaterials,
+                                                  "formProjectOperations" : formProjectOperations,
+                                                  "formManufactoryOperations" : formManufactoryOperations,
+                                                  "formContractorOperations" : formContractorOperations})
 
 
 
@@ -98,8 +119,9 @@ def order_create(request):
 
     RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
 
-    RequiredOperationFormset = inlineformset_factory(Order, RequiredOperation, fields=('idOrder', 'idOperation', 'idWorker', 'cost',), can_delete=True, extra=1)
-
+    RequiredOperationProjectFormset = inlineformset_factory(Order, RequiredOperationProject, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'),  can_delete=True, extra=1)
+    RequiredOperationManufactoryFormset = inlineformset_factory(Order, RequiredOperationManufactory, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
+    RequiredOperationContractorFormset = inlineformset_factory(Order, RequiredOperationContractor, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
 
     if request.method == "POST":
 
@@ -107,9 +129,11 @@ def order_create(request):
 
         formMaterials = RequiredMaterialFormset(request.POST)
 
-        formOperations = RequiredOperationFormset(request.POST)
+        formProjectOperations = RequiredOperationProjectFormset(request.POST)
+        formManufactoryOperations = RequiredOperationManufactoryFormset(request.POST)
+        formContractorOperations = RequiredOperationContractorFormset(request.POST)
 
-        if orderform.is_valid() and formMaterials.is_valid() and  formOperations.is_valid():
+        if orderform.is_valid() and formMaterials.is_valid() and  formProjectOperations.is_valid() and  formManufactoryOperations.is_valid() and  formContractorOperations.is_valid():
 
             orderObj = orderform.save()
 
@@ -121,8 +145,8 @@ def order_create(request):
                     choice.idOrder = orderObj
                     choice.save()
 
-            formOperations.save(commit=False)
-            for form in formOperations:
+            formProjectOperations.save(commit=False)
+            for form in formProjectOperations:
                 if form['cost'].value():
                     choice = form.save(commit=False)
                     choice.idOrder = orderObj
@@ -131,7 +155,11 @@ def order_create(request):
             return orders(request)
 
 
-        return render(request, "order_create.html", {"form": orderform, "formMaterials": formMaterials, "formOperations" : formOperations})
+        return render(request, "order_create.html", {"form": orderform,
+                                                     "formMaterials": formMaterials,
+                                                     "formProjectOperations" : formProjectOperations,
+                                                     "formManufactureOperations": formManufactoryOperations,
+                                                     "formContractorOperations" : formContractorOperations})
 
 
 
@@ -139,9 +167,16 @@ def order_create(request):
 
     formMaterials = RequiredMaterialFormset(queryset=RequiredMaterial.objects.none())
 
-    formOperations = RequiredOperationFormset(queryset=RequiredOperation.objects.none())
 
-    return render(request, "order_create.html", {"form": form, "formMaterials" : formMaterials, "formOperations" : formOperations})
+    formProjectOperations = RequiredOperationProjectFormset(queryset=RequiredOperationProject.objects.none())
+    formManufactoryOperations = RequiredOperationManufactoryFormset(queryset=RequiredOperationManufactory.objects.none())
+    formContractorOperations = RequiredOperationContractorFormset(queryset=RequiredOperationContractor.objects.none())
+
+    return render(request, "order_create.html", {"form": form,
+                                                 "formMaterials" : formMaterials,
+                                                 "formProjectOperations" : formProjectOperations,
+                                                 "formManufactoryOperations" : formManufactoryOperations,
+                                                 "formContractorOperations" : formContractorOperations})
 
 
 

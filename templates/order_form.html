@@ -1,16 +1,23 @@
 
-    <div class="container">
+<div class="container">
 
-        <div class="row">
+    <div class="row">
 
-            <div class = "col-6">
+        <div class="col-md-6">
+
+            <div class = "col-md-12">
 
                 {% include "order_form_customer.html"  %}
 
             </div>
 
+        </div>
 
-            <div class = "col-6">
+
+
+        <div class="col-md-6">
+
+            <div class = "col-md-12">
 
                 <ul class="nav nav-tabs">
 
@@ -27,12 +34,20 @@
 
                     <div id="operations" class="tab-pane fade active show">
 
-                        {% include "order_form_operations.html"  %}
+                        {% include "order_form_operations_project.html"  %}
+                        {% include "order_form_operations_manufactory.html"  %}
+                        {% include "order_form_operations_contractor.html"  %}
+
+                        <h3>Итого проект:</h3>
+                        <h3>Итого цех:</h3>
+                        <h3>Итого подрядчики:</h3>
+
+                        <h4>Итого:</h4>
 
                     </div>
 
 
-                     <div id="pay" class="tab-pane fade">
+                    <div id="pay" class="tab-pane fade">
 
                         {% include "order_form_pay.html"  %}
 
@@ -58,3 +73,4 @@
             </div>
         </div>
     </div>
+</div>

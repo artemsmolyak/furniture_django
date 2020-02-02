@@ -2,18 +2,8 @@
     margin-bottom: 20px;
 }
 
-
 .padding{
     padding: 10px;
-}
-
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
 }
 
 
@@ -22,6 +12,7 @@
    padding: 10px;
     margin: 10px;
 }
+
 
 
 .main-window{
@@ -38,7 +29,6 @@ li{
 padding-left: 15px;
 padding-rigth: 15px;
 }
-
 
 
 
