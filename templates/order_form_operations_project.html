@@ -3,16 +3,16 @@
 
 
 <br>
-<h4>Проект</h4>
+<h4  class="text-center">Проект</h4>
 
 <table class="table table-bordered" id = "form_set_operation_project">
     <thead>
-    <tr>
+    <tr class="text-center">
         <th scope="col">Операция</th>
         <th scope="col">Стоимость</th>
         <th scope="col">Исполнитель</th>
         <th scope="col">Исполнено</th>
-        <th scope="col">Дата исполнения</th>
+        <th scope="col">Дата выполнения</th>
         <th scope="col"></th>
     </tr>
     </thead>
@@ -35,7 +35,7 @@
         {% endfor %}
 
 
-            <tr class = "formset_row_operation_{{ formProjectOperations.prefix }}">
+            <tr class ="text-center formset_row_operation_{{ formProjectOperations.prefix }}">
                 <td> {{ formOperation.idOperation }}</td>
                 <td> {{ formOperation.cost }}</td>
                 <td> {{ formOperation.idWorker }}</td>

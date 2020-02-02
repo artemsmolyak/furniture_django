@@ -2,16 +2,16 @@
 
 
 <br>
-<h4>Цех</h4>
+<h4  class="text-center">Цех</h4>
 
 <table class="table table-bordered" id = "form_set_operation_manufactory">
     <thead>
-    <tr>
+    <tr  class="text-center">
         <th scope="col">Операция</th>
         <th scope="col">Стоимость</th>
         <th scope="col">Исполнитель</th>
         <th scope="col">Исполнено</th>
-        <th scope="col">Дата исполнения</th>
+        <th scope="col">Дата выполнения</th>
         <th scope="col"></th>
     </tr>
     </thead>
@@ -34,7 +34,7 @@
         {% endfor %}
 
 
-            <tr class = "formset_row_operation_{{ formManufactoryOperations.prefix }}">
+            <tr class = "text-center formset_row_operation_{{ formManufactoryOperations.prefix }}">
                 <td> {{ formOperation.idOperation }}</td>
                 <td> {{ formOperation.cost }}</td>
                 <td> {{ formOperation.idWorker }}</td>

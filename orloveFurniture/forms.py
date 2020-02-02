@@ -12,9 +12,7 @@ class OrderForm(forms.ModelForm):
         model = Order
         exclude = ['date_created', 'idOrder']
         widgets = {
-                   'surname': forms.TextInput(attrs={'size': 40}),
-                   'name': forms.TextInput(attrs={'size': 40}),
-                   'patronymic': forms.TextInput(attrs={'size': 40}),
+                   'fio': forms.TextInput(attrs={'size': 40}),
 
                    'nameOrder': forms.TextInput(attrs={'size': 40}),
                    'nameContract': forms.TextInput(attrs={'size': 40}),
@@ -24,7 +22,7 @@ class OrderForm(forms.ModelForm):
 
                    'trelloLink': forms.TextInput(attrs={'size': 40}),
 
-                   'details': forms.Textarea(attrs={'cols': 40, 'rows': 5})
+                   'details': forms.Textarea(attrs={'cols': 40, 'rows': 4})
                    }
 
     def __init__(self, *args, **kwargs):

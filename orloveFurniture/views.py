@@ -60,6 +60,8 @@ def order(request, good_id):
             instance.delete()
 
 
+
+            #materials
             formMaterials.save(commit=False)
 
             for form in formMaterials:
@@ -69,6 +71,7 @@ def order(request, good_id):
                     choice.save()
 
 
+            #project operation
             instance = RequiredOperationProject.objects.filter(idOrder=obj)
             instance.delete()
 
@@ -78,6 +81,38 @@ def order(request, good_id):
                 form.delete()
 
             for form in formProjectOperations:
+                if form['cost'].value() != 0 and form['cost'].value():
+                    choice = form.save(commit=False)
+                    choice.idOrder = obj
+                    choice.save()
+
+
+            # manufactory operation
+            instance = RequiredOperationManufactory.objects.filter(idOrder=obj)
+            instance.delete()
+
+            formManufactoryOperations.save(commit=False)
+
+            for form in formManufactoryOperations.deleted_objects:
+                form.delete()
+
+            for form in formManufactoryOperations:
+                if form['cost'].value() != 0 and form['cost'].value():
+                    choice = form.save(commit=False)
+                    choice.idOrder = obj
+                    choice.save()
+
+
+            # constractor operation
+            instance = RequiredOperationContractor.objects.filter(idOrder=obj)
+            instance.delete()
+
+            formContractorOperations.save(commit=False)
+
+            for form in formContractorOperations.deleted_objects:
+                form.delete()
+
+            for form in formContractorOperations:
                 if form['cost'].value() != 0 and form['cost'].value():
                     choice = form.save(commit=False)
                     choice.idOrder = obj
@@ -137,7 +172,7 @@ def order_create(request):
 
             orderObj = orderform.save()
 
-
+            #materials
             formMaterials.save(commit=False)
             for form in formMaterials:
                 if form['count'].value():
@@ -145,8 +180,25 @@ def order_create(request):
                     choice.idOrder = orderObj
                     choice.save()
 
+            #project operation
             formProjectOperations.save(commit=False)
             for form in formProjectOperations:
+                if form['cost'].value():
+                    choice = form.save(commit=False)
+                    choice.idOrder = orderObj
+                    choice.save()
+
+            #manufactory
+            formManufactoryOperations.save(commit=False)
+            for form in formManufactoryOperations:
+                if form['cost'].value():
+                    choice = form.save(commit=False)
+                    choice.idOrder = orderObj
+                    choice.save()
+
+            # contractor
+            formContractorOperations.save(commit=False)
+            for form in formContractorOperations:
                 if form['cost'].value():
                     choice = form.save(commit=False)
                     choice.idOrder = orderObj

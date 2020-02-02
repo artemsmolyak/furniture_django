@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="row ">
 
     {% if messages %}
         {% for message in messages %}
@@ -7,126 +7,114 @@
         {% endfor %}
     {% endif %}
 
-    <div class="row">
-
-        <div class = "navigation padding border position-fixed">
-
-            {%  csrf_token  %}
-
-            {{ form.errors }}
-
-            {% for error in form.non_field_errors %}
-                {{error}}
-            {% endfor %}
 
 
-            <div class="form-group">
+    <div class = "navigation padding position-fixed border">
 
+        {%  csrf_token  %}
+
+        {{ form.errors }}
+
+        {% for error in form.non_field_errors %}
+            {{error}}
+        {% endfor %}
+
+
+
+
+        <div class="form-group">
+            {% if objOrder.id %}
                 <div class="text-center"> <b> <label>Заказ номер</label>  {{ objOrder.id }} </b> </div>
-
-            </div>
-
-
-            <div class="form-group">
-                {{ form.nameOrder.errors }}
-
-                 <label for="{{ form.nameOrder.id_for_label }}">Наименование заказа</label><br>
-
-                {{ form.nameOrder }}
-            </div>
-
-
-
-            <div class="form-group">
-                {{ form.nameContract.errors }}
-
-                 <label for="{{ form.nameContract.id_for_label }}">Договор</label><br>
-
-                {{ form.nameContract }}
-            </div>
+            {% else %}
+                <div class="text-center"> <b> <label>Создание заказа</label>  </b> </div>
+            {% endif %}
+        </div>
 
 
 
 
+        <div class="form-group">
+            {{ form.nameOrder.errors }}
 
-            <div class="form-group">
-                {{ form.surname.errors }}
+            <label for="{{ form.nameOrder.id_for_label }}">Наименование заказа</label><br>
 
-                <label for="{{ form.surname.id_for_label }}">Фамилия</label><br>
-
-                {{ form.surname }}
-
-            </div>
+            {{ form.nameOrder }}
+        </div>
 
 
 
-            <div class="form-group">
-                {{ form.name.errors }}
+        <div class="form-group">
+            {{ form.nameContract.errors }}
 
-                <label for="{{ form.name.id_for_label }}">Имя</label><br>
+            <label for="{{ form.nameContract.id_for_label }}">Договор</label><br>
 
-                {{ form.name }}
-
-            </div>
-
+            {{ form.nameContract }}
+        </div>
 
 
-            <div class="form-group">
-                {{ form.patronymic.errors }}
-
-                <label for="{{ form.patronymic.id_for_label }}">Отчество</label><br>
-
-                {{ form.patronymic }}
-
-            </div>
 
 
-            <div class="form-group">
-                {{ form.address.errors }}
 
-                <label for="{{ form.address.id_for_label }}">Адрес</label><br>
+        <div class="form-group">
+            {{ form.fio.errors }}
 
-                {{ form.address }}
+            <label for="{{ form.fio.id_for_label }}">Фамилия, имя, отчество</label><br>
 
-            </div>
-
-
-            <div class="form-group">
-                {{ form.phone.errors }}
-
-                <label for="{{ form.phone.id_for_label }}">Телефон</label><br>
-
-                {{ form.phone }}
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="exampleFormControlSelect2">Статус</label><br>
-
-                {{ form.status }}
-
-            </div>
-
-
-            <div class="form-group">
-                {{ form.trelloLink.errors }}
-
-                <label for="{{ form.trelloLink.id_for_label }}">Ссылка на трелло</label><br>
-
-                {{ form.trelloLink }}
-
-            </div>
-
-            <div class="form-group">
-
-                <label for="{{ form.details.id_for_label }}">Детали</label><br>
-
-                {{ form.details }}
-            </div>
+            {{ form.fio }}
 
         </div>
+
+        <div class="form-group">
+            {{ form.address.errors }}
+
+            <label for="{{ form.address.id_for_label }}">Адрес</label><br>
+
+            {{ form.address }}
+
+        </div>
+
+
+        <div class="form-group">
+            {{ form.phone.errors }}
+
+            <label for="{{ form.phone.id_for_label }}">Телефон</label><br>
+
+            {{ form.phone }}
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="exampleFormControlSelect2">Статус</label><br>
+
+            {{ form.status }}
+
+        </div>
+
+
+        <div class="form-group">
+            {{ form.trelloLink.errors }}
+
+            <label for="{{ form.trelloLink.id_for_label }}">Ссылка на трелло</label><br>
+
+            {{ form.trelloLink }}
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="{{ form.details.id_for_label }}">Детали</label><br>
+
+            {{ form.details }}
+        </div>
+
+
+        <div class = "btn-group align-items-center" >
+            <button type="submit" class="btn btn-secondary " value="Save" name = "btn1"> Сохранить </button>
+            <button type="submit" class="btn btn-secondary " value="Remove" name = "btn2"> Удалить </button>
+        </div>
+
 
     </div>
 </div>

@@ -1,76 +1,79 @@
 
-<div class="container">
 
-    <div class="row">
 
-        <div class="col-md-6">
+<div class="row">
 
-            <div class = "col-md-12">
+    <div class="col-md-4">
 
-                {% include "order_form_customer.html"  %}
+        <div class = "col-md-12">
 
-            </div>
+            {% include "order_form_customer.html"  %}
 
         </div>
 
-
-
-        <div class="col-md-6">
-
-            <div class = "col-md-12">
-
-                <ul class="nav nav-tabs">
-
-                    <li class="nav-item"><a class="nav-link text-secondary active" data-toggle="tab" href="#operations">Операции</a></li>
-                    <li class="nav-item"><a class="nav-link text-secondary " data-toggle="tab" href="#pay">Оплата</a></li>
-                    <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#materials">Материалы</a></li>
-                    <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#sketch">Эскизы</a></li>
-
-                </ul>
+    </div>
 
 
 
-                <div class="tab-content">
+    <div class="col-md-8">
 
-                    <div id="operations" class="tab-pane fade active show">
+        <div class = "col-md-12">
 
-                        {% include "order_form_operations_project.html"  %}
-                        {% include "order_form_operations_manufactory.html"  %}
-                        {% include "order_form_operations_contractor.html"  %}
+            <ul class="nav nav-tabs">
 
+                <li class="nav-item"><a class="nav-link text-secondary active" data-toggle="tab" href="#operations">Операции</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary " data-toggle="tab" href="#pay">Оплата</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#materials">Материалы</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#sketch">Эскизы</a></li>
+
+            </ul>
+
+
+
+            <div class="tab-content">
+
+                <div id="operations" class="tab-pane fade active show">
+
+                    {% include "order_form_operations_project.html"  %}
+                    {% include "order_form_operations_manufactory.html"  %}
+                    {% include "order_form_operations_contractor.html"  %}
+
+
+                    <div class = "border">
                         <h3>Итого проект:</h3>
                         <h3>Итого цех:</h3>
                         <h3>Итого подрядчики:</h3>
-
-                        <h4>Итого:</h4>
-
                     </div>
 
-
-                    <div id="pay" class="tab-pane fade">
-
-                        {% include "order_form_pay.html"  %}
-
-                    </div>
-
-
-
-                    <div id="materials" class="tab-pane fade active">
-
-                        {% include "order_form_materials.html"  %}
-
-                    </div>
-
-
-
-                    <div id="sketch" class="tab-pane fade">
-
-                        {% include "order_form_sketch.html"  %}
-
-                    </div>
+                    <p><h3>Общий итог:</h3></p>
 
                 </div>
+
+
+                <div id="pay" class="tab-pane fade">
+
+                    {% include "order_form_pay.html"  %}
+
+                </div>
+
+
+
+                <div id="materials" class="tab-pane fade active">
+
+                    {% include "order_form_materials.html"  %}
+
+                </div>
+
+
+
+                <div id="sketch" class="tab-pane fade">
+
+                    {% include "order_form_sketch.html"  %}
+
+                </div>
+
             </div>
         </div>
     </div>
 </div>
+

@@ -24,9 +24,7 @@ class Order(models.Model):
     nameOrder =  models.CharField(max_length=255)
     nameContract = models.CharField(max_length=255)
 
-    surname = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    patronymic = models.CharField(max_length=255)
+    fio = models.CharField(max_length=255)
 
     status = models.ForeignKey(StatusCatalog, blank=False, null=False, on_delete=models.PROTECT)
 
@@ -47,7 +45,7 @@ class Order(models.Model):
         super(Order, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name + " " + self.surname + ": " + self.details
+        return self.fio + ": " + self.details
 
 
 class PositionCatalog(models.Model):
@@ -130,11 +128,11 @@ class RequiredOperationProject(models.Model):
     idOperation =  models.ForeignKey(OperationProjectCatalog,  blank=False, null=False, on_delete=models.PROTECT)
     idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
 
-    cost = models.IntegerField()
+    cost = models.IntegerField(blank=False, null=False)
 
-    isDone = models.BooleanField()
+    isDone = models.BooleanField(default=False)
 
-    isDoneDate = models.DateField()
+    isDoneDate = models.DateField(null=True, blank = True)
 
     def save(self, *args, **kwargs):
         super(RequiredOperationProject, self).save(*args, **kwargs)
@@ -158,11 +156,11 @@ class RequiredOperationManufactory(models.Model):
     idOperation = models.ForeignKey(OperationManufactoryCatalog, blank=False, null=False, on_delete=models.PROTECT)
     idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
 
-    cost = models.IntegerField()
+    cost = models.IntegerField(blank=False, null=False)
 
-    isDone = models.BooleanField()
+    isDone = models.BooleanField(default=False)
 
-    isDoneDate = models.DateField()
+    isDoneDate = models.DateField(null=True, blank = True)
 
     def save(self, *args, **kwargs):
         super(RequiredOperationManufactory, self).save(*args, **kwargs)
@@ -187,11 +185,11 @@ class RequiredOperationContractor(models.Model):
     idOperation = models.ForeignKey(OperationContractorCatalog, blank=False, null=False, on_delete=models.PROTECT)
     idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
 
-    cost = models.IntegerField()
+    cost = models.IntegerField(blank=False, null=False)
 
-    isDone = models.BooleanField()
+    isDone = models.BooleanField(default=False)
 
-    isDoneDate = models.DateField()
+    isDoneDate = models.DateField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
         super(RequiredOperationContractor, self).save(*args, **kwargs)
