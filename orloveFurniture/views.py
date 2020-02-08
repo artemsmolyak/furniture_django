@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Order, StatusCatalog, RequiredMaterial, Storage, DillerCatalog, RequiredOperationProject, RequiredOperationManufactory,RequiredOperationContractor
+from .models import WorkerCatalog
+from .forms import RequiredOperationProjectForm, RequiredOperationManufactoryForm, RequiredOperationContractorForm
 from .forms import OrderForm, DillerForm
-from django.forms.models import modelformset_factory, inlineformset_factory
+from django.forms.models import inlineformset_factory
 from django.contrib.auth.decorators import login_required
 
 
@@ -35,9 +37,9 @@ def order(request, good_id):
     RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
 
 
-    RequiredOperationProjectFormset = inlineformset_factory(Order, RequiredOperationProject, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
-    RequiredOperationManufactoryFormset = inlineformset_factory(Order, RequiredOperationManufactory, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
-    RequiredOperationContractorFormset = inlineformset_factory(Order, RequiredOperationContractor, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
+    RequiredOperationProjectFormset = inlineformset_factory(Order, RequiredOperationProject, RequiredOperationProjectForm, can_delete=True, extra=1)
+    RequiredOperationManufactoryFormset = inlineformset_factory(Order, RequiredOperationManufactory, RequiredOperationManufactoryForm, can_delete=True, extra=1)
+    RequiredOperationContractorFormset = inlineformset_factory(Order, RequiredOperationContractor,  RequiredOperationContractorForm, can_delete=True, extra=1)
 
 
 
@@ -154,9 +156,9 @@ def order_create(request):
 
     RequiredMaterialFormset = inlineformset_factory(Order, RequiredMaterial, fields=('idMaterial', 'count',), can_delete=True, extra=1)
 
-    RequiredOperationProjectFormset = inlineformset_factory(Order, RequiredOperationProject, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'),  can_delete=True, extra=1)
-    RequiredOperationManufactoryFormset = inlineformset_factory(Order, RequiredOperationManufactory, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
-    RequiredOperationContractorFormset = inlineformset_factory(Order, RequiredOperationContractor, fields=('idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate'), can_delete=True, extra=1)
+    RequiredOperationProjectFormset = inlineformset_factory(Order, RequiredOperationProject,  RequiredOperationProjectForm,  can_delete=True, extra=1)
+    RequiredOperationManufactoryFormset = inlineformset_factory(Order,  RequiredOperationManufactory, RequiredOperationManufactoryForm, can_delete=True, extra=1)
+    RequiredOperationContractorFormset = inlineformset_factory(Order, RequiredOperationContractor, RequiredOperationContractorForm, can_delete=True, extra=1)
 
     if request.method == "POST":
 
@@ -274,4 +276,68 @@ def createRequestMaterials(request):
 
 
 def createReportCompletedApplication(request):
-    return render(request, "report_completed_application.html")
+
+    if request.method == "POST":
+
+        worker = request.POST['worker']
+
+       # date1 = request.POST['date1']
+
+       # date2 = request.POST['date2']
+
+        month = request.POST['month']
+
+        report = RequiredOperationProject.objects.all().filter(idWorker=worker).filter(isDoneDate__month = month)
+
+        return render(request, "report_completed_application.html", { "report" : report } )
+
+
+
+    workers = WorkerCatalog.objects.all()
+
+    months = {
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    }
+
+    years = {
+        '2019',
+        '2020'
+    }
+
+    return render(request, "report_application_choose_worker.html", {"workers" : workers, "months" : months, "years" : years} )
+
+
+
+def createReportApplication(request):
+
+
+    if request.method == "POST":
+
+        worker = request.POST.get("worker", "")
+
+        return render(request, "report_application_choose_worker.html", {"worker" : worker})
+
+    Operations = []
+    for needOperation in RequiredOperationProject.objects.all().order_by('idWorker'):
+        Operation = {}
+        Operation["workerName"] = needOperation.idWorker
+        Operation["order"] = needOperation.idOrder
+        Operation["operation"] = needOperation.idOperation
+        Operation["isDone"] = needOperation.isDone
+
+        Operations.append(Operation)
+
+
+    workers =  WorkerCatalog.objects.all()
+    return render(request, "report_all_applications.html", {"workers" : workers, "Operations" : Operations})

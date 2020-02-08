@@ -12,7 +12,39 @@
 
     <div class = "main-window" >
 
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Заказ</th>
+                <th scope="col">Операция</th>
+                <th scope="col">Время выполнения</th>
+                <th scope="col">Стоимость</th>
+            </tr>
+            </thead>
 
+            <tbody>
+            {% for r in report %}
+                <tr>
+                    <td>
+                        {{ r.idOrder }}
+                    </td>
+                    <td>
+                        {{ r.idOperation }}
+                    </td>
+                    <td>
+                        {{ r.isDoneDate }}
+                    </td>
+                    <td>
+                        {{ r.cost }}
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <H3>Итог:</H3>
 
     </div>
 

@@ -45,7 +45,7 @@ class Order(models.Model):
         super(Order, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.fio + ": " + self.details
+        return self.nameContract + ". " + self.nameOrder + ". " + self.details
 
 
 class PositionCatalog(models.Model):
@@ -56,6 +56,9 @@ class PositionCatalog(models.Model):
 
 
 class WorkerCatalog(models.Model):
+
+    #idWorker = models.CharField(max_length=36, blank=True, unique=False, default=uuid.uuid4)
+
     date_created = models.DateTimeField
 
     name = models.CharField(max_length=255)
@@ -65,7 +68,7 @@ class WorkerCatalog(models.Model):
     position = models.ManyToManyField(PositionCatalog)
 
     def __str__(self):
-        return self.name + " " + self.patronymic
+        return self.surname  + " " +  self.name + " " + self.patronymic
 
 
 
@@ -197,8 +200,6 @@ class RequiredOperationContractor(models.Model):
 
 
 
-
-
 class DillerCatalog(models.Model):
 
     date_created = models.DateTimeField
@@ -213,10 +214,23 @@ class DillerCatalog(models.Model):
 
 
 
+class MaterialTypeCatalog(models.Model):
+
+    name = models.CharField(max_length=255)
+
+
+class MaterialCategoryCatalog(models.Model):
+
+    name = models.CharField(max_length=255)
+
+
 class MaterialCatalog(models.Model):
 
     date_created = models.DateTimeField
     name = models.CharField(max_length=255)
+
+    type = models.ForeignKey(MaterialTypeCatalog, blank=False, null=False, on_delete=models.PROTECT)
+    category = models.ForeignKey(MaterialCategoryCatalog, blank=False, null=False, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.name

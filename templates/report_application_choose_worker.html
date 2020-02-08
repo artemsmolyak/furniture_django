@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Заказ {% endblock %}
+
+
+{% block styles %}
+     <link rel="stylesheet" type="text/css" href= "{% static "css/index.css" %}" >
+{% endblock %}
+
+{% block content %}
+
+    <div class = "main-window" >
+
+        <div class="row">
+
+
+            <form method="post">
+
+                {%  csrf_token  %}
+
+
+                <H3>Сотрудник:</H3>
+
+                <select class="custom-select col-xs-3 " name="worker">
+
+                    {% for worker in workers %}
+
+                        <option value={{ worker.id }} > {{ worker }} </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <H3>Месяц:</H3>
+                <select class="custom-select" name = "month">
+
+                    {% for month in months %}
+
+                        <option value={{ forloop.counter }}  > {{ month }} </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <H3>Год:</H3>
+                <select class="custom-select" name = "year">
+
+                    {% for year in years %}
+
+                        <option value={{ year }} > {{ year }} </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <br>
+                <br>
+
+                <input type="submit" value="Рассчитать">
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

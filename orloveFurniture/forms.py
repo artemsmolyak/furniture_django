@@ -12,7 +12,7 @@ class OrderForm(forms.ModelForm):
         model = Order
         exclude = ['date_created', 'idOrder']
         widgets = {
-                   'fio': forms.TextInput(attrs={'size': 40}),
+                   'fio': forms.TextInput(attrs={'size': 40, "class" : "ajsdfjasdfj"}),
 
                    'nameOrder': forms.TextInput(attrs={'size': 40}),
                    'nameContract': forms.TextInput(attrs={'size': 40}),
@@ -58,6 +58,10 @@ class RequiredOperationProjectForm(forms.ModelForm):
         widgets = {
             'isDoneDate': forms.widgets.DateInput(attrs={'type': 'date'})
         }
+
+
+    def __init__(self, *args, **kwargs):
+        super(RequiredOperationProjectForm, self).__init__(*args, **kwargs)
 
 
 

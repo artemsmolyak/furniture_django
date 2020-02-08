@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Заказ {% endblock %}
+
+
+{% block styles %}
+     <link rel="stylesheet" type="text/css" href= "{% static "css/index.css" %}" >
+{% endblock %}
+
+{% block content %}
+
+    <div class = "main-window" >
+
+        <table class="table table-bordered bg-light" id = "operations">
+            <thead>
+            <tr>
+                <th scope="col">ФИО</th>
+                <th scope="col">Заказ</th>
+                <th scope="col">Операция</th>
+                <th scope="col">Сделано</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for operation in Operations %}
+                <tr>
+                        <td>
+                            {{  operation.workerName }}
+                        </td>
+
+                        <td>
+                            <a href = /order/{{ operation.order.id }} > {{  operation.order }} </a>
+                        </td>
+
+                        <td>
+                            {{  operation.operation }}
+                        </td>
+
+                        <td>
+                            {{ operation.isDone }}
+                        </td>
+
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+
+    </div>
+
+{% endblock %}
