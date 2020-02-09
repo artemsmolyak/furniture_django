@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01ef6b62-f271-40c5-bbac-120cf8e26724" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orlove/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/orlove/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orloveFurniture/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/orloveFurniture/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orloveFurniture/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/orloveFurniture/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orloveFurniture/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/orloveFurniture/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/report_all_applications.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report_outstanding_applications.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/report_application_choose_worker.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report_application_choose_worker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/report_completed_application.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report_completed_application.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,11 +33,11 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/orloveFurniture/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="329" column="39" selection-start-line="329" selection-start-column="39" selection-end-line="329" selection-end-column="39" />
+            <state relative-caret-position="29">
+              <caret line="297" column="33" lean-forward="true" selection-start-line="297" selection-start-column="33" selection-end-line="297" selection-end-column="33" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
-                <marker date="1581237972658" expanded="true" signature="12070:12383" ph="..." />
+                <marker date="1581238370129" expanded="true" signature="12108:12421" ph="..." />
               </folding>
             </state>
           </provider>
@@ -64,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/orlove/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+            <state relative-caret-position="465">
+              <caret line="126" column="23" lean-forward="true" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -125,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="report_application_choose_worker.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="report_application_choose_worker.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/report_application_choose_worker.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="38" column="69" selection-start-line="38" selection-start-column="69" selection-end-line="38" selection-end-column="69" />
+            <state relative-caret-position="539">
+              <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -231,14 +222,14 @@
         <option value="$PROJECT_DIR$/templates/order_form_customer.html" />
         <option value="$PROJECT_DIR$/orloveFurniture/models.py" />
         <option value="$PROJECT_DIR$/templates/order_form_operations_project.html" />
-        <option value="$PROJECT_DIR$/orlove/settings.py" />
         <option value="$PROJECT_DIR$/orloveFurniture/forms.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/report_outstanding_applications.html" />
         <option value="$PROJECT_DIR$/orloveFurniture/urls.py" />
         <option value="$PROJECT_DIR$/templates/report_completed_application.html" />
-        <option value="$PROJECT_DIR$/orloveFurniture/views.py" />
         <option value="$PROJECT_DIR$/templates/report_application_choose_worker.html" />
+        <option value="$PROJECT_DIR$/orloveFurniture/views.py" />
+        <option value="$PROJECT_DIR$/orlove/settings.py" />
       </list>
     </option>
   </component>
@@ -373,9 +364,9 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49919486" weight="0.32910052" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7670424" visible="true" weight="0.11746032" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7670424" visible="true" weight="0.11746032" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49973163" weight="0.32910052" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27428877" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27428877" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" visible="true" weight="0.031669352" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49973163" weight="0.11534391" />
@@ -706,13 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/orlove/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/orloveFurniture/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -741,16 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/orloveFurniture/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/report_outstanding_applications.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -765,21 +739,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/orloveFurniture/views.py">
+    <entry file="file://$PROJECT_DIR$/orloveFurniture/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="329" column="39" selection-start-line="329" selection-start-column="39" selection-end-line="329" selection-end-column="39" />
+        <state relative-caret-position="345">
+          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding>
-            <element signature="e#0#54#0" expanded="true" />
-            <marker date="1581237972658" expanded="true" signature="12070:12383" ph="..." />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/report_application_choose_worker.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="38" column="69" selection-start-line="38" selection-start-column="69" selection-end-line="38" selection-end-column="69" />
+        <state relative-caret-position="539">
+          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/orloveFurniture/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="297" column="33" lean-forward="true" selection-start-line="297" selection-start-column="33" selection-end-line="297" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+            <marker date="1581238370129" expanded="true" signature="12108:12421" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/orlove/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="126" column="23" lean-forward="true" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
         </state>
       </provider>
     </entry>
