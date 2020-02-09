@@ -3,6 +3,7 @@ from .models import Order, RequiredMaterial, DillerCatalog
 from .models import RequiredOperationProject, RequiredOperationManufactory, RequiredOperationContractor
 
 
+
 class OrderForm(forms.ModelForm):
 
     cost = forms.IntegerField(required=False)
@@ -56,7 +57,7 @@ class RequiredOperationProjectForm(forms.ModelForm):
         model = RequiredOperationProject
         fields = ['idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate']
         widgets = {
-            'isDoneDate': forms.widgets.DateInput(attrs={'type': 'date'})
+            'isDoneDate': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
         }
 
 
@@ -82,5 +83,5 @@ class RequiredOperationContractorForm(forms.ModelForm):
         model = RequiredOperationContractor
         fields = ['idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate']
         widgets = {
-            'isDoneDate': forms.widgets.DateInput(attrs={'type': 'date'})
+            'isDoneDate': forms.widgets.DateInput(attrs={'type': 'date'}, format='%m/%d/%y')
         }

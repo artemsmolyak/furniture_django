@@ -21,8 +21,7 @@
 
 
                 <H3>Сотрудник:</H3>
-
-                <select class="custom-select col-xs-3 " name="worker">
+                <select class="custom-select col-xs-3" name="worker_id">
 
                     {% for worker in workers %}
 
@@ -35,9 +34,9 @@
                 <H3>Месяц:</H3>
                 <select class="custom-select" name = "month">
 
-                    {% for month in months %}
+                    {% for key, value in months.items %}
 
-                        <option value={{ forloop.counter }}  > {{ month }} </option>
+                        <option value={{ forloop.counter }}  > {{ key }} </option>
 
                     {% endfor %}
 

@@ -18,6 +18,9 @@ urlpatterns = [
     url(r'^requestMaterials/$', views.createRequestMaterials, name='createRequestMaterials'),
 
     url(r'^reportCompletedApplication/$', views.createReportCompletedApplication, name='reportCompletedApplication'),
-    url(r'^reportApplication/$', views.createReportApplication, name='reportAllApplication'),
+    url(r'^reportOutstandingApplication/$', views.createReportOutstandingApplication, name='reportOutstandingApplication'),
+
+
+    url(r'^xls/$', views.xls, name='xls'),
 
 ]

@@ -29,6 +29,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+DATE_FORMAT = '%Y-%m-%d'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -131,3 +134,6 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'index'
+
+
+

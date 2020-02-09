@@ -12,13 +12,17 @@
 
     <div class = "main-window" >
 
+        <H4>Сотрудник: {{ worker_info }} </H4>
+        <H4>Месяц: {{ period }} </H4>
+
+
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th scope="col">Заказ</th>
                 <th scope="col">Операция</th>
-                <th scope="col">Время выполнения</th>
-                <th scope="col">Стоимость</th>
+                <th scope="col">Дата выполнения</th>
+                <th scope="col">Стоимость работ</th>
             </tr>
             </thead>
 
@@ -44,7 +48,14 @@
         </table>
 
 
-        <H3>Итог:</H3>
+        <H3>Итог: {{  sum }} р.</H3>
+
+
+
+    <form method="get" action="/xls">
+         {%  csrf_token  %}
+         <input type="submit" value="Сохранить xls">
+    </form>
 
     </div>
 

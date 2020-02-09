@@ -275,11 +275,15 @@ def createRequestMaterials(request):
 
 
 
+################      REPORTS
+
 def createReportCompletedApplication(request):
 
     if request.method == "POST":
 
-        worker = request.POST['worker']
+        worker_id = request.POST['worker_id']
+
+        worker_info = WorkerCatalog.objects.all().filter(id = worker_id)
 
        # date1 = request.POST['date1']
 
@@ -287,28 +291,36 @@ def createReportCompletedApplication(request):
 
         month = request.POST['month']
 
-        report = RequiredOperationProject.objects.all().filter(idWorker=worker).filter(isDoneDate__month = month)
+        report = RequiredOperationProject.objects.all().filter(idWorker=worker_id).filter(isDoneDate__month = month)
 
-        return render(request, "report_completed_application.html", { "report" : report } )
+        sum = 0
+        for cost_ in report:
+            sum = sum + cost_.cost
+
+
+        return render(request, "report_completed_application.html", { "worker_info" : worker_info.first(),
+                                                                      "period" : month,
+                                                                      "report" : report, "sum" : sum } )
 
 
 
     workers = WorkerCatalog.objects.all()
 
-    months = {
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-    }
+    months =  {"January":0, "February":1, "March":2, "April":3, "May":4, "June":5, "July":6, "August":7, "September":8, "October":9, "November":10, "December":11 }
+    # {
+    #      1 : 'January',
+    #      2 : 'February',
+    #      3 : 'March',
+    #      4 : 'April',
+    #      5 : 'May',
+    #      6 : 'June',
+    #      7 : 'July',
+    #      8 : 'August',
+    #     9 : 'September',
+    #     10 : 'October',
+    #     11 : 'November',
+    #     12 : 'December'
+    # }
 
     years = {
         '2019',
@@ -319,25 +331,29 @@ def createReportCompletedApplication(request):
 
 
 
-def createReportApplication(request):
-
+def createReportOutstandingApplication(request):
 
     if request.method == "POST":
+        return HttpResponse("в разработке")
 
-        worker = request.POST.get("worker", "")
 
-        return render(request, "report_application_choose_worker.html", {"worker" : worker})
+
 
     Operations = []
-    for needOperation in RequiredOperationProject.objects.all().order_by('idWorker'):
+    for needOperation in RequiredOperationProject.objects.all().filter(isDone=False).order_by('idWorker'):
         Operation = {}
         Operation["workerName"] = needOperation.idWorker
         Operation["order"] = needOperation.idOrder
         Operation["operation"] = needOperation.idOperation
-        Operation["isDone"] = needOperation.isDone
 
         Operations.append(Operation)
 
 
     workers =  WorkerCatalog.objects.all()
-    return render(request, "report_all_applications.html", {"workers" : workers, "Operations" : Operations})
+
+    return render(request, "report_outstanding_applications.html", {"workers" : workers, "Operations" : Operations})
+
+
+
+def xls(request):
+    return HttpResponse("в разработке")

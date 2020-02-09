@@ -15,31 +15,26 @@
         <table class="table table-bordered bg-light" id = "operations">
             <thead>
             <tr>
-                <th scope="col">ФИО</th>
-                <th scope="col">Заказ</th>
+                <th scope="col">ФИО назначенного работника</th>
                 <th scope="col">Операция</th>
-                <th scope="col">Сделано</th>
+                <th scope="col">Заказ</th>
             </tr>
             </thead>
             <tbody>
 
             {% for operation in Operations %}
                 <tr>
-                        <td>
-                            {{  operation.workerName }}
-                        </td>
+                    <td>
+                        {{  operation.workerName }}
+                    </td>
 
-                        <td>
-                            <a href = /order/{{ operation.order.id }} > {{  operation.order }} </a>
-                        </td>
+                    <td>
+                        {{  operation.operation }}
+                    </td>
 
-                        <td>
-                            {{  operation.operation }}
-                        </td>
-
-                        <td>
-                            {{ operation.isDone }}
-                        </td>
+                    <td>
+                        <a href = /order/{{ operation.order.id }} > {{  operation.order }} </a>
+                    </td>
 
 
                 </tr>
