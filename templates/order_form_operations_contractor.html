@@ -2,7 +2,6 @@
 
 
 <br>
-<h5  class="text-center">Подрядчики</h5>
 
 <table class="table table-bordered" id = "form_set_operation">
     <thead>
@@ -59,6 +58,7 @@
  $('.formset_row_operation_{{ formContractorOperations.prefix }}').formset({
         addText: '+',
         deleteText: 'x',
+        formCssClass: 'dynamic-formset3',
         prefix: '{{ formContractorOperations.prefix }}',
         animateForms: true
     });
@@ -66,6 +66,8 @@
 
 
 </script>
+
+
 
 
 

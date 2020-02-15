@@ -21,7 +21,10 @@
 
             <ul class="nav nav-tabs">
 
-                <li class="nav-item"><a class="nav-link text-secondary active" data-toggle="tab" href="#operations">Операции</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary active" data-toggle="tab" href="#project">Проект</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#manufactory">Цех</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#contractor">Подрядчики</a></li>
+
                 <li class="nav-item"><a class="nav-link text-secondary " data-toggle="tab" href="#pay">Оплата</a></li>
                 <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#materials">Материалы</a></li>
                 <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#sketch">Эскизы</a></li>
@@ -32,21 +35,44 @@
 
             <div class="tab-content">
 
-                <div id="operations" class="tab-pane fade active show">
+                <div id="project" class="tab-pane fade active show">
 
-                    {% include "order_form_operations_project.html"  %}
-                    {% include "order_form_operations_manufactory.html"  %}
-                    {% include "order_form_operations_contractor.html"  %}
+                  {% include "order_form_operations_project.html"  %}
 
-
-                    <div class = "border align-items-center m-4">
-                        <h5>Итого проект:</h5>
-                        <h5>Итого цех:</h5>
-                        <h5>Итого подрядчики:</h5>
-                        <p><h5>Общий итог:</h5></p>
+                   <div class = "border align-items-center m-4">
+                        <h5>Итого выполнено по проекту:  {{ sumProjectOperation }} р.</h5>
                     </div>
 
                 </div>
+
+
+
+
+                <div id="manufactory" class="tab-pane fade active">
+
+                   {% include "order_form_operations_manufactory.html"  %}
+
+                    <div class = "border align-items-center m-4">
+                        <h5>Итого выполнено по цеху:  {{ sumManufactoryOperation }} р.</h5>
+                        <br>
+                    </div>
+
+                </div>
+
+
+
+                <div id="contractor" class="tab-pane fade active">
+
+                    {% include "order_form_operations_contractor.html"  %}
+
+                    <div class = "border align-items-center m-4">
+                        <h5>Итого выполнено подрядчиками:  {{ sumContractorOperation }} р. </h5>
+                    </div>
+
+
+                </div>
+
+
 
 
                 <div id="pay" class="tab-pane fade">

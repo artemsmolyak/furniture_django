@@ -6,6 +6,7 @@ from .forms import RequiredOperationProjectForm, RequiredOperationManufactoryFor
 from .forms import OrderForm, DillerForm
 from django.forms.models import inlineformset_factory
 from django.contrib.auth.decorators import login_required
+import csv
 
 
 
@@ -40,7 +41,6 @@ def order(request, good_id):
     RequiredOperationProjectFormset = inlineformset_factory(Order, RequiredOperationProject, RequiredOperationProjectForm, can_delete=True, extra=1)
     RequiredOperationManufactoryFormset = inlineformset_factory(Order, RequiredOperationManufactory, RequiredOperationManufactoryForm, can_delete=True, extra=1)
     RequiredOperationContractorFormset = inlineformset_factory(Order, RequiredOperationContractor,  RequiredOperationContractorForm, can_delete=True, extra=1)
-
 
 
     if request.method == "POST":
@@ -141,12 +141,42 @@ def order(request, good_id):
         formContractorOperations = RequiredOperationContractorFormset(instance=obj)
 
 
+
+        forms = RequiredOperationProject.objects.all().filter(idOrder=good_id).filter(isDone=True)
+        sumProjectOperation = 0
+        for form_ in forms:
+            sumProjectOperation = sumProjectOperation + form_.cost
+
+
+
+        forms = RequiredOperationManufactory.objects.all().filter(idOrder=good_id).filter(isDone=True)
+        sumManufactoryOperation = 0
+        for form_ in forms:
+            sumManufactoryOperation = sumManufactoryOperation + form_.cost
+
+
+
+
+        forms = RequiredOperationContractor.objects.all().filter(idOrder=good_id).filter(isDone=True)
+        sumContractorOperation = 0
+        for form_ in forms:
+            sumContractorOperation = sumContractorOperation + form_.cost
+
+
     # objOrder для номера заказа
-    return render(request, "order_create.html", { "objOrder" : obj, "form": form,
+    return render(request, "order_create.html", { "objOrder" : obj,
+                                                  "form": form,
+
                                                   "formMaterials" : formMaterials,
                                                   "formProjectOperations" : formProjectOperations,
                                                   "formManufactoryOperations" : formManufactoryOperations,
-                                                  "formContractorOperations" : formContractorOperations})
+                                                  "formContractorOperations" : formContractorOperations,
+
+                                                  "sumProjectOperation": sumProjectOperation,
+                                                  "sumManufactoryOperation": sumManufactoryOperation,
+                                                  "sumContractorOperation": sumContractorOperation,
+                                                  "sumTotal": sumProjectOperation + sumManufactoryOperation + sumContractorOperation
+                                                  })
 
 
 
@@ -356,4 +386,33 @@ def createReportOutstandingApplication(request):
 
 
 def xls(request):
-    return HttpResponse("в разработке")
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+
+    writer = csv.writer(response)
+
+    period = request.POST['period']
+    worker_info = request.POST['worker_info']
+    sum =  request.POST['sum']
+
+    writer.writerow([])
+    writer.writerow(['ФИО',worker_info])
+    writer.writerow(['месяц',period ])
+    writer.writerow([])
+
+
+    #table
+    writer.writerow(['Договор','Операция', 'Дата выполнения', 'Стоимость' ])
+
+    count = request.POST['count_']
+    for val in range(0, int(count)):
+        idOrder = request.POST['idOrder' + str(val)]
+        idOperation = request.POST['idOperation'+ str(val)]
+        isDoneDate = request.POST['isDoneDate'+ str(val)]
+        cost = request.POST['cost'+ str(val)]
+        writer.writerow([idOrder, idOperation, isDoneDate, cost])
+
+    writer.writerow([])
+    writer.writerow(['', '', 'итоговая сумма', sum])
+
+    return response

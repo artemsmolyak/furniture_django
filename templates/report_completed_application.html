@@ -12,8 +12,14 @@
 
     <div class = "main-window" >
 
+
+    <form method="post" action="/xls/">
+
         <H4>Сотрудник: {{ worker_info }} </H4>
+        <input type="hidden" id="worker_info" name="worker_info" value="{{ worker_info }}">
+
         <H4>Месяц: {{ period }} </H4>
+        <input type="hidden" id="period" name="period" value={{ period }}>
 
 
         <table class="table table-bordered">
@@ -27,19 +33,24 @@
             </thead>
 
             <tbody>
+            <input type="hidden" id="count_" name="count_" value={{ report.count }}>
             {% for r in report %}
                 <tr>
                     <td>
                         {{ r.idOrder }}
+                         <input type="hidden" id="idOrder" name="idOrder{{ forloop.counter0 }}" value={{ r.idOrder }}>
                     </td>
                     <td>
                         {{ r.idOperation }}
+                         <input type="hidden" id="idOperation" name="idOperation{{ forloop.counter0 }}" value= {{ r.idOperation }}>
                     </td>
                     <td>
                         {{ r.isDoneDate }}
+                         <input type="hidden" id="isDoneDate" name="isDoneDate{{ forloop.counter0 }}" value= "{{ r.isDoneDate }}">
                     </td>
                     <td>
                         {{ r.cost }}
+                         <input type="hidden" id="cost" name="cost{{ forloop.counter0 }}" value={{ r.cost }}>
                     </td>
 
                 </tr>
@@ -49,12 +60,12 @@
 
 
         <H3>Итог: {{  sum }} р.</H3>
+        <input type="hidden" id="sum" name="sum" value={{ sum }}>
 
 
 
-    <form method="get" action="/xls">
          {%  csrf_token  %}
-         <input type="submit" value="Сохранить xls">
+         <input type="submit" value="Сохранить csv">
     </form>
 
     </div>
