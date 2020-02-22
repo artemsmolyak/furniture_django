@@ -1,14 +1,9 @@
- <div class="order_list">
 
-    <div class="card-rows">
 
-              {% for order in orders %}
+{% for order in orders %}
 
-                       <a href=/order/{{ order.id }}/ >
-                             {% include "order_leaf.html" %}
-                       </a>
+    <a href=/order/{{ order.id }}/ >
+        {% include "order_leaf.html" %}
+    </a>
 
-              {% endfor %}
-    </div>
-
- </div>
+{% endfor %}

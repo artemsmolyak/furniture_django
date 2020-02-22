@@ -13,17 +13,17 @@ class OrderForm(forms.ModelForm):
         model = Order
         exclude = ['date_created', 'idOrder']
         widgets = {
-                   'fio': forms.TextInput(attrs={'size': 40, "class" : "ajsdfjasdfj"}),
+                   'fio': forms.TextInput(attrs={'size': 38, "class" : "ajsdfjasdfj"}),
 
-                   'nameOrder': forms.TextInput(attrs={'size': 40}),
-                   'nameContract': forms.TextInput(attrs={'size': 40}),
+                   'nameOrder': forms.TextInput(attrs={'size': 38}),
+                   'nameContract': forms.TextInput(attrs={'size': 38}),
 
-                   'address': forms.TextInput(attrs={'size': 40}),
+                   'address': forms.TextInput(attrs={'size': 38}),
                    'phone': forms.TextInput(attrs={'size': 11}),
 
-                   'trelloLink': forms.TextInput(attrs={'size': 40}),
+                   'trelloLink': forms.TextInput(attrs={'size': 38}),
 
-                   'details': forms.Textarea(attrs={'cols': 40, 'rows': 4})
+                   'details': forms.Textarea(attrs={'cols': 38, 'rows': 4 })
                    }
 
     def __init__(self, *args, **kwargs):

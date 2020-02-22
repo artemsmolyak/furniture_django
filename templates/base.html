@@ -6,6 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <title>
         {% block title %}
         {% endblock %}
@@ -17,94 +18,95 @@
     <link rel="stylesheet" type="text/css" href= "{% static "css/index.css" %}" >
 
 
-
     {% block styles %}
 
     {% endblock %}
 
     <script type="text/javascript" src="{% static "jquery/jquery-3.4.1.min.js" %}" ></script>
     <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}" ></script>
+
     {% block scripts %}
 
     {% endblock %}
+
 </head>
 
 
 <body>
-      {% block nav %}
+{% block nav %}
 
-         <nav class="navigation navbar navbar-expand-lg fixed-top bg-dark ">
+    <nav class="navigation navbar navbar-expand-lg fixed-top header-menu">
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-              <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto main-menu-text">
 
-                  <li class="nav-item active">
-                      <a class="nav-link text-light" href="{% url "index" %}">Домой <span class="sr-only">(current)</span></a>
-                  </li>
-
-
-                  <li class="nav-item active">
-                      <a class="nav-link text-light" href="/order_create">Создать заказ</a>
-                  </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="{% url "index" %}">Домой <span class="sr-only">(current)</span></a>
+                </li>
 
 
-                  <li class="nav-item active">
-                      <a class="nav-link text-light" href="/requestMaterials">Сформировать заявку на материалы</a>
-                  </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="/order_create">Создать заказ</a>
+                </li>
+
+
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="/requestMaterials">Заявка на материалы</a>
+                </li>
 
 
 
-                  <li class="nav-item dropdown active">
-                      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Справочники
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="/store">Склад</a>
-                          <a class="dropdown-item" href="#">Работники</a>
-                          <a class="dropdown-item" href="#">Поставщики</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                  </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Справочники
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/store">Склад</a>
+                        <a class="dropdown-item" href="#">Работники</a>
+                        <a class="dropdown-item" href="#">Поставщики</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
 
 
-                  <li class="nav-item dropdown active">
-                      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Отчеты
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="/reportOutstandingApplication">Отчет по невыполненым заявкам</a>
-                          <a class="dropdown-item" href="/reportCompletedApplication">Отчет по выполненым заявкам</a>
-                      </div>
-                  </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Отчеты
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/reportOutstandingApplication">Отчет по невыполненым заявкам</a>
+                        <a class="dropdown-item" href="/reportCompletedApplication">Отчет по выполненым заявкам</a>
+                    </div>
+                </li>
 
 
-                  <li class="nav-item">
-                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Архив</a>
-                  </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Архив</a>
+                </li>
 
-                  <li class="nav-item active">
-                      <a class="nav-link text-light" href="/logout">Выйти</a>
-                  </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="/logout">Выйти</a>
+                </li>
 
             </ul>
 
-              <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> > </button>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 searchBtn_color" type="submit">
+                    >
+                </button>
             </form>
-          </div>
-        </nav>
-      {% endblock %}
+
+        </div>
+    </nav>
+{% endblock %}
 
 
 
     {% block content %}
     {% endblock %}
-
-
-
 
 
 </body>

@@ -1,3 +1,4 @@
+{% comment %}
 {% extends "base.html" %}
 {% load static %}
 
@@ -12,14 +13,14 @@
 
 {% block content %}
 
-    <div class = "main-window" >
+    <form method="post">
 
-        <form method="post">
+    <div class = "container" >
 
-            {% include "order_form.html" %}
-
-        </form>
+         {% include "order_form.html" %}
 
     </div>
 
-{% endblock %}
+    </form>
+
+{% endblock %}{% endcomment %}

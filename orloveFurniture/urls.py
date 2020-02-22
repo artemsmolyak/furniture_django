@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^$', views.orders, name='index'),
     url(r'^index/$', views.orders, name='index'),
 
-    url(r'^order_create/$', views.order_create, name='order_create'),
+    url(r'^order_create/$', views.order_create, name='order'),
     url(r'^order/(?P<good_id>\d+)/$', views.order, name='order'),
 
     url(r'^store/$', views.store, name='store'),

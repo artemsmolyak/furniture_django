@@ -1,106 +1,95 @@
 {% load static %}
 
 
-<div class="row">
+<div class="col-4 left-window">
 
-    <div class="col-md-4">
+    {% include "order_form_customer.html"  %}
 
-        <div class = "col-md-12">
-
-            {% include "order_form_customer.html"  %}
-
-        </div>
-
-    </div>
+</div>
 
 
+<div class="col-8 tabs">
 
-    <div class="col-md-8">
+    <div class = "margin-main-menu">
 
-        <div class = "col-md-12">
+        <ul class="nav nav-tabs" id = "navigationList">
 
-            <ul class="nav nav-tabs">
+            <li class="nav-item"><a id = "pro_" class="nav-link active text-dark" data-toggle="tab" href="#project">Проект</a></li>
+            <li class="nav-item"><a id = "man_" class="nav-link text-dark" data-toggle="tab" href="#manufactory">Цех</a></li>
+            <li class="nav-item"><a id = "con_" class="nav-link text-dark" data-toggle="tab" href="#contractor">Подрядчики</a></li>
+            <li class="nav-item"><a id = "mat_" class="nav-link text-dark" data-toggle="tab" href="#materials">Материалы</a></li>
+            <li class="nav-item"><a id = "pay_" class="nav-link text-dark" data-toggle="tab" href="#pay">Оплата</a></li>
+            <li class="nav-item"><a id = "ske_" class="nav-link text-dark" data-toggle="tab" href="#sketch">Эскизы</a></li>
 
-                <li class="nav-item"><a class="nav-link active text-secondary" data-toggle="tab" href="#project">Проект</a></li>
-                <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#manufactory">Цех</a></li>
-                <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#contractor">Подрядчики</a></li>
-
-
-                <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#materials">Материалы</a></li>
-
-
-                <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#pay">Оплата</a></li>
-                <li class="nav-item"><a class="nav-link text-secondary" data-toggle="tab" href="#sketch">Эскизы</a></li>
-
-            </ul>
+        </ul>
 
 
 
-            <div class="tab-content">
+        <div class="tab-content">
 
+            <div id="project" class="tab-pane fade in active show">
 
-                 <div id="materials" class="tab-pane fade in active">
+                {% include "order_form_operations_project.html"  %}
 
-                    {% include "order_form_materials.html"  %}
-
-                </div>
-
-
-
-                <div id="project" class="tab-pane fade in active show">
-
-                    {% include "order_form_operations_project.html"  %}
-
-                    <div class = "border align-items-center m-4">
-                        <h5>Итого выполнено по проекту:  {{ sumProjectOperation }} р.</h5>
-                    </div>
-
-                </div>
-
-
-                <div id="manufactory" class="tab-pane fade in active ">
-
-                   {% include "order_form_operations_manufactory.html"  %}
-
-                    <div class = "border align-items-center m-4">
-                        <h5>Итого выполнено по цеху:  {{ sumManufactoryOperation }} р.</h5>
-                        <br>
-                    </div>
-
-                </div>
-
-
-
-                <div id="contractor" class="tab-pane fade in active ">
-
-                    {% include "order_form_operations_contractor.html"  %}
-
-                    <div class = "border align-items-center m-4">
-                        <h5>Итого выполнено подрядчиками:  {{ sumContractorOperation }} р. </h5>
-                    </div>
-
-                </div>
-
-
-
-
-                <div id="pay" class="tab-pane fade in active">
-
-                    {% include "order_form_pay.html"  %}
-
-                </div>
-
-
-                <div id="sketch" class="tab-pane fade in active ">
-
-                    {% include "order_form_sketch.html"  %}
-
+                <div class = "align-items-center m-4">
+                    <h5>Выполнено по проекту:  {{ sumProjectOperation }} р.</h5>
                 </div>
 
             </div>
+
+
+            <div id="manufactory" class="tab-pane fade in active  ">
+
+                {% include "order_form_operations_manufactory.html"  %}
+
+                <div class = "align-items-center m-4">
+                    <h5>Выполнено по цеху:  {{ sumManufactoryOperation }} р.</h5>
+                    <br>
+                </div>
+
+            </div>
+
+
+
+            <div id="contractor" class="tab-pane fade in active ">
+
+                {% include "order_form_operations_contractor.html"  %}
+
+                <div class = "align-items-center m-4">
+                    <h5>Выполнено подрядчиками:  {{ sumContractorOperation }} р. </h5>
+                </div>
+
+            </div>
+
+
+            <div id="materials" class="tab-pane fade in active">
+
+                {% include "order_form_materials.html"  %}
+
+            </div>
+
+
+            <div id="pay" class="tab-pane fade ">
+
+                {% include "order_form_pay.html"  %}
+
+            </div>
+
+
+            <div id="sketch" class="tab-pane fade  ">
+
+                {% include "order_form_sketch.html"  %}
+
+            </div>
+
         </div>
+
     </div>
+
 </div>
+
+
+
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -108,6 +97,85 @@
 
 
 <script type="text/javascript">
+
+
+
+    $('#navigationList li #pro_').click(function() {
+
+         $("div#project").show();
+
+         $("div#manufactory").hide();
+         $("div#contractor").hide();
+         $("div#pay").hide();
+         $("div#materials").hide();
+         $("div#sketch").hide();
+    });
+
+     $('#navigationList li #man_').click(function() {
+
+         $("div#manufactory").show();
+
+         $("div#project").hide();
+         $("div#contractor").hide();
+         $("div#pay").hide();
+         $("div#materials").hide();
+         $("div#sketch").hide();
+    });
+
+
+      $('#navigationList li #con_').click(function() {
+
+          $("div#contractor").show();
+
+         $("div#project").hide();
+         $("div#manufactory").hide();
+         $("div#pay").hide();
+         $("div#materials").hide();
+         $("div#sketch").hide();
+    });
+
+
+     $('#navigationList li #mat_').click(function() {
+
+         $("div#materials").show();
+
+         $("div#project").hide();
+         $("div#contractor").hide();
+         $("div#manufactory").hide();
+         $("div#pay").hide();
+         $("div#sketch").hide();
+    });
+
+
+      $('#navigationList li #pay_').click(function() {
+
+         $("div#pay").show();
+
+         $("div#project").hide();
+         $("div#manufactory").hide();
+         $("div#contractor").hide();
+         $("div#materials").hide();
+         $("div#sketch").hide();
+    });
+
+
+         $('#navigationList li #ske_').click(function() {
+
+         $("div#sketch").show();
+
+         $("div#project").hide();
+         $("div#manufactory").hide();
+         $("div#contractor").hide();
+         $("div#pay").hide();
+         $("div#materials").hide();
+
+    });
+
+
+
+
+
+
 
     $(function() {
 
@@ -143,6 +211,13 @@
             prefix: '{{ formMaterials.prefix }}',
             deleteCssClass : 'delete___'
         });
+
+
+         $("div#manufactory").hide();
+         $("div#contractor").hide();
+         $("div#pay").hide();
+         $("div#materials").hide();
+         $("div#sketch").hide();
 
     });
 </script>

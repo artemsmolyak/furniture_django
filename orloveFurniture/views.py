@@ -123,12 +123,12 @@ def order(request, good_id):
 
             return orders(request)
 
-        return render(request, "order_create.html", {"objOrder": instance, "form": form,
+        return render(request, "order.html", {"objOrder": instance, "form": form,
                                                      "formMaterials": formMaterials,
                                                      "formProjectOperations" : formProjectOperations,
                                                      "formManufactoryOperations" : formManufactoryOperations,
                                                      "formContractorOperations" : formContractorOperations
-                                                     })
+                                                               })
 
 
     else:
@@ -165,7 +165,7 @@ def order(request, good_id):
 
 
     # objOrder для номера заказа
-    return render(request, "order_create.html", { "objOrder" : obj,
+    return render(request, "order.html", {"objOrder" : obj,
                                                   "form": form,
 
                                                   "formMaterials" : formMaterials,
@@ -173,11 +173,11 @@ def order(request, good_id):
                                                   "formManufactoryOperations" : formManufactoryOperations,
                                                   "formContractorOperations" : formContractorOperations,
 
-                                                  "sumProjectOperation": sumProjectOperation,
-                                                  "sumManufactoryOperation": sumManufactoryOperation,
-                                                  "sumContractorOperation": sumContractorOperation,
-                                                  "sumTotal": sumProjectOperation + sumManufactoryOperation + sumContractorOperation
-                                                  })
+                                                           "sumProjectOperation": sumProjectOperation,
+                                                           "sumManufactoryOperation": sumManufactoryOperation,
+                                                           "sumContractorOperation": sumContractorOperation,
+                                                           "sumTotal": sumProjectOperation + sumManufactoryOperation + sumContractorOperation
+                                                           })
 
 
 
@@ -240,7 +240,7 @@ def order_create(request):
             return orders(request)
 
 
-        return render(request, "order_create.html", {"form": orderform,
+        return render(request, "order.html", {"form": orderform,
                                                      "formMaterials": formMaterials,
                                                      "formProjectOperations" : formProjectOperations,
                                                      "formManufactureOperations": formManufactoryOperations,
@@ -257,7 +257,7 @@ def order_create(request):
     formManufactoryOperations = RequiredOperationManufactoryFormset(queryset=RequiredOperationManufactory.objects.none())
     formContractorOperations = RequiredOperationContractorFormset(queryset=RequiredOperationContractor.objects.none())
 
-    return render(request, "order_create.html", {"form": form,
+    return render(request, "order.html", {"form": form,
                                                  "formMaterials" : formMaterials,
                                                  "formProjectOperations" : formProjectOperations,
                                                  "formManufactoryOperations" : formManufactoryOperations,

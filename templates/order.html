@@ -10,14 +10,17 @@
 
 {% block content %}
 
-    <div class = "main-window" >
+    <form method="post">
 
-        <form method="post">
+        <div class = "container-fluid">
 
-            {% include "order_form.html" %}
+            <div class = "row fill_height" >
 
-        </form>
+                {% include "order_form.html" %}
 
-    </div>
+            </div>
+        </div>
+
+    </form>
 
 {% endblock %}

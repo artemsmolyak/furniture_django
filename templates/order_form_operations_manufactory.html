@@ -5,13 +5,13 @@
 
 
 
-    <table class="table table-bordered" id = "form_set_operation_manufactory">
+    <table class="table table-borderless" id = "form_set_operation_manufactory">
         <thead>
-        <tr  class="text-center">
+        <tr >
+            <th scope="col"></th>
             <th scope="col">Операция</th>
             <th scope="col">Стоимость</th>
             <th scope="col">Исполнитель</th>
-            <th scope="col">Исполнено</th>
             <th scope="col">Дата выполнения</th>
             <th scope="col"></th>
         </tr>
@@ -35,11 +35,11 @@
             {% endfor %}
 
 
-            <tr class ="text-center">
+            <tr>
+                <td> {{ formOperation.isDone }}</td>
                 <td> {{ formOperation.idOperation }}</td>
                 <td> {{ formOperation.cost }}</td>
                 <td> {{ formOperation.idWorker }}</td>
-                <td> {{ formOperation.isDone }}</td>
                 <td> {{ formOperation.isDoneDate }}</td>
                 <td> {{ formOperation.errors }} </td>
             </tr>
