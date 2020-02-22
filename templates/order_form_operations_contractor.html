@@ -1,72 +1,55 @@
 {% load static %}
 
 
+
+
 <br>
 
-<table class="table table-bordered" id = "form_set_operation">
-    <thead>
-    <tr class="text-center">
-        <th scope="col">Операция</th>
-        <th scope="col">Стоимость</th>
-        <th scope="col">Исполнитель</th>
-        <th scope="col">Исполнено</th>
-        <th scope="col">Дата выполнения</th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
 
-    <tbody>
+    <table class="table table-bordered" id = "form_set_contractor">
+        <thead>
+        <tr class="text-center">
+            <th scope="col">Операция</th>
+            <th scope="col">Стоимость</th>
+            <th scope="col">Исполнитель</th>
+            <th scope="col">Исполнено</th>
+            <th scope="col">Дата выполнения</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
 
-    {{ formContractorOperations.management_form }}
+        <tbody>
 
-    {% for formOperation in formContractorOperations %}
+        {{ formContractorOperations.management_form }}
 
-        {{ formOperation.errors }}
+        {% for formOperation in formContractorOperations %}
 
-        {% for error in formOperation.non_field_errors %}
-            {{error}}
-        {% endfor %}
+            {{ formOperation.errors }}
 
-
-        {% for hidden in formOperation.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
+            {% for error in formOperation.non_field_errors %}
+                {{error}}
+            {% endfor %}
 
 
-            <tr class = "text-center formset_row_operation_{{ formContractorOperations.prefix }}">
+            {% for hidden in formOperation.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+
+            <tr>
                 <td class="text-center"> {{ formOperation.idOperation }}</td>
                 <td> {{ formOperation.cost }}</td>
                 <td> {{ formOperation.idWorker }}</td>
                 <td> {{ formOperation.isDone }}</td>
                 <td> {{ formOperation.isDoneDate }} </td>
-                <td> {{ formOperation.errors }}</td>
+                <td> {{ formOperation.errors }} </td>
             </tr>
 
 
-    {% endfor %}
+        {% endfor %}
 
-    </tbody>
-</table>
-
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{% static 'js/jquery.formset.js' %}"></script>
-
-
-<script type="text/javascript">
-
- $('.formset_row_operation_{{ formContractorOperations.prefix }}').formset({
-        addText: '+',
-        deleteText: 'x',
-        formCssClass: 'dynamic-formset3',
-        prefix: '{{ formContractorOperations.prefix }}',
-        animateForms: true
-    });
-
-
-
-</script>
-
+        </tbody>
+    </table>
 
 
 
