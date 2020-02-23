@@ -72,9 +72,15 @@ A {
 
 
 
+
+
+
 .searchBtn_color{
     color: #d6d7dc;
 }
+
+
+
 
 
 
@@ -91,4 +97,14 @@ A {
 .card_header_text{
     text-align: center;
     color: black;
+}
+
+
+
+
+
+.report_margin{
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 70px;
 }

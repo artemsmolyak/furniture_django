@@ -10,7 +10,7 @@
 
 {% block content %}
 
-    <div class = "main-window" >
+    <div class = "report_margin" >
 
 
     <form method="post" action="/xls/">
@@ -22,7 +22,7 @@
         <input type="hidden" id="period" name="period" value={{ period }}>
 
 
-        <table class="table table-bordered">
+        <table class="table bg-light">
             <thead>
             <tr>
                 <th scope="col">Заказ</th>
@@ -37,7 +37,7 @@
             {% for r in report %}
                 <tr>
                     <td>
-                        {{ r.idOrder }}
+                        <a href = /order/{{ r.idOrder.id }} > {{  r.idOrder }} </a>
                          <input type="hidden" id="idOrder" name="idOrder{{ forloop.counter0 }}" value={{ r.idOrder }}>
                     </td>
                     <td>

@@ -10,7 +10,7 @@
 
 {% block content %}
 
-    <div class = "main-window" >
+    <div class = "report_margin" >
 
         <div class="row">
 
@@ -20,7 +20,7 @@
                 {%  csrf_token  %}
 
 
-                <H3>Сотрудник:</H3>
+                <H4>Сотрудник:</H4>
                 <select class="custom-select col-xs-3" name="worker_id">
 
                     {% for worker in workers %}
@@ -31,7 +31,7 @@
 
                 </select>
 
-                <H3>Месяц:</H3>
+                <H4>Месяц:</H4>
                 <select class="custom-select" name = "month">
 
                     {% for key, value in months.items %}
@@ -42,7 +42,11 @@
 
                 </select>
 
-                <H3>Год:</H3>
+
+
+
+
+                <H4>Год:</H4>
                 <select class="custom-select" name = "year">
 
                     {% for year in years %}
