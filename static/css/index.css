@@ -24,6 +24,8 @@
 .left-window{
     min-height: 100vh;
     background-color: #d6d7dc;
+
+
 }
 
 
@@ -107,4 +109,13 @@ A {
     margin-left: 3%;
     margin-right: 3%;
     margin-top: 70px;
+}
+
+
+
+
+
+.confirm_delete_order{
+    margin-top: 20%;
+    text-align: center;
 }

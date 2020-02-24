@@ -126,7 +126,7 @@ class RequiredOperationProject(models.Model):
 
     id = models.AutoField(primary_key=True)
 
-    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.PROTECT)
+    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.CASCADE)
 
     idOperation =  models.ForeignKey(OperationProjectCatalog,  blank=False, null=False, on_delete=models.PROTECT)
     idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
@@ -154,7 +154,7 @@ class OperationManufactoryCatalog(models.Model):
 class RequiredOperationManufactory(models.Model):
     id = models.AutoField(primary_key=True)
 
-    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.PROTECT)
+    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.CASCADE)
 
     idOperation = models.ForeignKey(OperationManufactoryCatalog, blank=False, null=False, on_delete=models.PROTECT)
     idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
@@ -183,7 +183,7 @@ class RequiredOperationContractor(models.Model):
 
     id = models.AutoField(primary_key=True)
 
-    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.PROTECT)
+    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.CASCADE)
 
     idOperation = models.ForeignKey(OperationContractorCatalog, blank=False, null=False, on_delete=models.PROTECT)
     idWorker = models.ForeignKey(WorkerCatalog, blank=False, null=False, on_delete=models.PROTECT)
@@ -241,7 +241,7 @@ class RequiredMaterial(models.Model):
 
     id = models.AutoField(primary_key=True)
 
-    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.PROTECT)
+    idOrder = models.ForeignKey(Order, blank=False, null=False, on_delete=models.CASCADE)
 
     idMaterial = models.ForeignKey(MaterialCatalog, blank=False, null=False, on_delete=models.PROTECT)
 

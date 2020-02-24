@@ -16,21 +16,21 @@
             <th scope="col">Исполнитель</th>
             <th scope="col">Дата выполнения</th>
             <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
 
         <tbody>
 
+
         {{ formProjectOperations.management_form }}
 
         {% for formOperation in formProjectOperations %}
 
-            {{ formOperation.errors }}
 
             {% for error in formOperation.non_field_errors %}
-                {{error}}
+                {{ error }}
             {% endfor %}
-
 
             {% for hidden in formOperation.hidden_fields %}
                 {{ hidden }}
@@ -43,7 +43,20 @@
                 <td> {{ formOperation.cost }}</td>
                 <td> {{ formOperation.idWorker }}</td>
                 <td> {{ formOperation.isDoneDate }}</td>
-                <td> {{ formOperation.errors }}</td>
+                <td>
+                    {% for key, value in formOperation.errors.items %}
+
+                        {% if forloop.first %}
+
+                            <div class="alert alert-danger">
+                                <strong>{{ value }}</strong>
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+                </td>
+                <td></td>
             </tr>
 
 

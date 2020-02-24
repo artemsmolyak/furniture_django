@@ -1,14 +1,14 @@
 {% load static %}
 
 
-<div class="col-4 left-window">
+<div class="col-4 left-window ">
 
     {% include "order_form_customer.html"  %}
 
 </div>
 
 
-<div class="col-8 tabs">
+<div class="col-8 tabs ">
 
     <div class = "margin-main-menu">
 
@@ -26,6 +26,8 @@
 
 
         <div class="tab-content">
+
+            <input type="hidden" id="fieldShown" value = {{ errorString }}>
 
             <div id="project" class="tab-pane fade in active show">
 
@@ -102,78 +104,75 @@
 
     $('#navigationList li #pro_').click(function() {
 
-         $("div#project").show();
+        $("div#project").show();
 
-         $("div#manufactory").hide();
-         $("div#contractor").hide();
-         $("div#pay").hide();
-         $("div#materials").hide();
-         $("div#sketch").hide();
-    });
-
-     $('#navigationList li #man_').click(function() {
-
-         $("div#manufactory").show();
-
-         $("div#project").hide();
-         $("div#contractor").hide();
-         $("div#pay").hide();
-         $("div#materials").hide();
-         $("div#sketch").hide();
-    });
-
-
-      $('#navigationList li #con_').click(function() {
-
-          $("div#contractor").show();
-
-         $("div#project").hide();
-         $("div#manufactory").hide();
-         $("div#pay").hide();
-         $("div#materials").hide();
-         $("div#sketch").hide();
-    });
-
-
-     $('#navigationList li #mat_').click(function() {
-
-         $("div#materials").show();
-
-         $("div#project").hide();
-         $("div#contractor").hide();
-         $("div#manufactory").hide();
-         $("div#pay").hide();
-         $("div#sketch").hide();
-    });
-
-
-      $('#navigationList li #pay_').click(function() {
-
-         $("div#pay").show();
-
-         $("div#project").hide();
-         $("div#manufactory").hide();
-         $("div#contractor").hide();
-         $("div#materials").hide();
-         $("div#sketch").hide();
-    });
-
-
-         $('#navigationList li #ske_').click(function() {
-
-         $("div#sketch").show();
-
-         $("div#project").hide();
-         $("div#manufactory").hide();
-         $("div#contractor").hide();
-         $("div#pay").hide();
-         $("div#materials").hide();
+        $("div#manufactory").hide();
+        $("div#contractor").hide();
+        $("div#pay").hide();
+        $("div#materials").hide();
+        $("div#sketch").hide();
 
     });
 
+    $('#navigationList li #man_').click(function() {
+
+        $("div#manufactory").show();
+
+        $("div#project").hide();
+        $("div#contractor").hide();
+        $("div#pay").hide();
+        $("div#materials").hide();
+        $("div#sketch").hide();
+    });
 
 
+    $('#navigationList li #con_').click(function() {
 
+        $("div#contractor").show();
+
+        $("div#project").hide();
+        $("div#manufactory").hide();
+        $("div#pay").hide();
+        $("div#materials").hide();
+        $("div#sketch").hide();
+    });
+
+
+    $('#navigationList li #mat_').click(function() {
+
+        $("div#materials").show();
+
+        $("div#project").hide();
+        $("div#contractor").hide();
+        $("div#manufactory").hide();
+        $("div#pay").hide();
+        $("div#sketch").hide();
+    });
+
+
+    $('#navigationList li #pay_').click(function() {
+
+        $("div#pay").show();
+
+        $("div#project").hide();
+        $("div#manufactory").hide();
+        $("div#contractor").hide();
+        $("div#materials").hide();
+        $("div#sketch").hide();
+    });
+
+
+    $('#navigationList li #ske_').click(function() {
+
+        $("div#sketch").show();
+
+        $("div#project").hide();
+        $("div#manufactory").hide();
+        $("div#contractor").hide();
+        $("div#pay").hide();
+        $("div#materials").hide();
+
+    });
 
 
 
@@ -218,6 +217,13 @@
          $("div#pay").hide();
          $("div#materials").hide();
          $("div#sketch").hide();
+
+
+
+         var errorString = document.getElementById("fieldShown").value
+         if (errorString != ""){
+            alert("Ошибка заполнения форм");
+         }
 
     });
 </script>

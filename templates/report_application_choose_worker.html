@@ -31,12 +31,13 @@
 
                 </select>
 
+
                 <H4>Месяц:</H4>
                 <select class="custom-select" name = "month">
 
                     {% for key, value in months.items %}
 
-                        <option value={{ forloop.counter }}  > {{ key }} </option>
+                        <option value={{ forloop.counter }}  > {{ value }} </option>
 
                     {% endfor %}
 

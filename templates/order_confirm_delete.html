@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Заказ {% endblock %}
+
+
+{% block styles %}
+     <link rel="stylesheet" type="text/css" href= "{% static "css/index.css" %}" >
+{% endblock %}
+
+{% block content %}
+
+<div class = "confirm_delete_order">
+
+<form action="" method="post">
+
+    {% csrf_token %}
+
+    <p>Вы уверены, что хотите удалить заказ "{{ object }}"?</p>
+
+    <input type="submit" value="Удалить" name = "RemoveBtn"/>
+
+</form>
+
+
+</div>
+{% endblock %}

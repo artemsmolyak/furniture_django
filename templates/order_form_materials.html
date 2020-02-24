@@ -9,6 +9,7 @@
             <th scope="col">Требуемый материал</th>
             <th scope="col">Нужное количество</th>
             <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
 
@@ -17,8 +18,6 @@
         {{ formMaterials.management_form }}
 
         {% for formMaterial in formMaterials %}
-
-            {{ formMaterial.errors }}
 
             {% for error in formMaterial.non_field_errors %}
                 {{error}}
@@ -34,7 +33,12 @@
             <tr>
                 <td> {{ formMaterial.idMaterial }}</td>
                 <td> {{ formMaterial.count }}</td>
-                <td> {{ formMaterial.errors }} </td>
+                <td>
+                    {% for key, value in formOperation.errors.items %}
+                        {{ value }}
+                    {% endfor %}
+                </td>
+                <td></td>
             </tr>
 
 
