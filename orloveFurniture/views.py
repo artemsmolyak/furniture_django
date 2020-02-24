@@ -52,6 +52,7 @@ def createRequestMaterials(request):
 
 ################      REPORTS
 
+#выполненная работа
 def createReportCompletedApplication(request):
 
     if request.method == "POST":
@@ -66,16 +67,35 @@ def createReportCompletedApplication(request):
 
         month = request.POST['month']
 
-        report = RequiredOperationProject.objects.all().filter(idWorker=worker_id).filter(isDoneDate__month = month)
+        year =  request.POST['year']
+
+
+        reportProject = RequiredOperationProject.objects.all().filter(idWorker=worker_id).filter(isDoneDate__month = month).filter(isDoneDate__year = year)
+
+        reportManufactory = RequiredOperationManufactory.objects.all().filter(idWorker=worker_id).filter(isDoneDate__month=month).filter(isDoneDate__year=year)
+
+        reportContractor = RequiredOperationContractor.objects.all().filter(idWorker=worker_id).filter(isDoneDate__month=month).filter(isDoneDate__year=year)
+
 
         sum = 0
-        for cost_ in report:
+        for cost_ in reportProject:
+            sum = sum + cost_.cost
+
+        for cost_ in reportManufactory:
+            sum = sum + cost_.cost
+
+        for cost_ in reportContractor:
             sum = sum + cost_.cost
 
 
         return render(request, "report_completed_application.html", { "worker_info" : worker_info.first(),
                                                                       "period" : month,
-                                                                      "report" : report, "sum" : sum } )
+
+                                                                      "reportProject" : reportProject,
+                                                                      "reportManufactory": reportManufactory,
+                                                                      "reportContractor": reportContractor,
+
+                                                                      "sum" : sum } )
 
 
 
@@ -118,14 +138,11 @@ def createReportCompletedApplication(request):
     return render(request, "report_application_choose_worker.html", {"workers" : workers, "months" : months, "years" : years} )
 
 
-
+#невыполненная работа
 def createReportOutstandingApplication(request):
 
     if request.method == "POST":
         return HttpResponse("в разработке")
-
-
-
 
     Operations = []
     for needOperation in RequiredOperationProject.objects.all().filter(isDone=False).order_by('idWorker'):

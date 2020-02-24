@@ -34,7 +34,8 @@
 
             <tbody>
             <input type="hidden" id="count_" name="count_" value={{ report.count }}>
-            {% for r in report %}
+
+            {% for r in reportProject %}
                 <tr>
                     <td>
                         <a href = /order/{{ r.idOrder.id }} > {{  r.idOrder }} </a>
@@ -55,6 +56,54 @@
 
                 </tr>
             {% endfor %}
+
+
+               {% for r in reportManufactory %}
+                <tr>
+                    <td>
+                        <a href = /order/{{ r.idOrder.id }} > {{  r.idOrder }} </a>
+                         <input type="hidden" id="idOrder" name="idOrder{{ forloop.counter0 }}" value={{ r.idOrder }}>
+                    </td>
+                    <td>
+                        {{ r.idOperation }}
+                         <input type="hidden" id="idOperation" name="idOperation{{ forloop.counter0 }}" value= {{ r.idOperation }}>
+                    </td>
+                    <td>
+                        {{ r.isDoneDate }}
+                         <input type="hidden" id="isDoneDate" name="isDoneDate{{ forloop.counter0 }}" value= "{{ r.isDoneDate }}">
+                    </td>
+                    <td>
+                        {{ r.cost }}
+                         <input type="hidden" id="cost" name="cost{{ forloop.counter0 }}" value={{ r.cost }}>
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+
+               {% for r in reportContractor%}
+                <tr>
+                    <td>
+                        <a href = /order/{{ r.idOrder.id }} > {{  r.idOrder }} </a>
+                         <input type="hidden" id="idOrder" name="idOrder{{ forloop.counter0 }}" value={{ r.idOrder }}>
+                    </td>
+                    <td>
+                        {{ r.idOperation }}
+                         <input type="hidden" id="idOperation" name="idOperation{{ forloop.counter0 }}" value= {{ r.idOperation }}>
+                    </td>
+                    <td>
+                        {{ r.isDoneDate }}
+                         <input type="hidden" id="isDoneDate" name="isDoneDate{{ forloop.counter0 }}" value= "{{ r.isDoneDate }}">
+                    </td>
+                    <td>
+                        {{ r.cost }}
+                         <input type="hidden" id="cost" name="cost{{ forloop.counter0 }}" value={{ r.cost }}>
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+
             </tbody>
         </table>
 
