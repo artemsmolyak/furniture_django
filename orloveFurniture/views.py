@@ -131,7 +131,6 @@ def createReportCompletedApplication(request):
     # }
 
     years = {
-        '2019',
         '2020'
     }
 

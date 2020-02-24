@@ -83,5 +83,5 @@ class RequiredOperationContractorForm(forms.ModelForm):
         model = RequiredOperationContractor
         fields = ['idOrder', 'idOperation', 'idWorker', 'cost', 'isDone', 'isDoneDate']
         widgets = {
-            'isDoneDate': forms.widgets.DateInput(attrs={'type': 'date'}, format='%m/%d/%y')
+            'isDoneDate': forms.widgets.DateInput(attrs={'type': 'date'})
         }
