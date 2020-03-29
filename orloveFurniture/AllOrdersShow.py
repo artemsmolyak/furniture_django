@@ -6,6 +6,7 @@ from .models import Order, StatusCatalog
 
 
 class AllOrdersShow(LoginRequiredMixin, TemplateView):
+
     template_name = "ordersAll.html"
 
     def get_context_data(self, *args, **kwargs):

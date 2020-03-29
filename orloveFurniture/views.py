@@ -7,7 +7,9 @@ from .forms import OrderForm, DillerForm
 from django.forms.models import inlineformset_factory
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+
 import csv
+from django.http import JsonResponse
 
 
 
@@ -98,7 +100,6 @@ def createReportCompletedApplication(request):
                                                                       "sum" : sum } )
 
 
-
     workers = WorkerCatalog.objects.all()
 
     months =  {0:"January",
@@ -114,21 +115,6 @@ def createReportCompletedApplication(request):
                10:"November",
                11:"December" }
 
-
-    # {
-    #      1 : 'January',
-    #      2 : 'February',
-    #      3 : 'March',
-    #      4 : 'April',
-    #      5 : 'May',
-    #      6 : 'June',
-    #      7 : 'July',
-    #      8 : 'August',
-    #     9 : 'September',
-    #     10 : 'October',
-    #     11 : 'November',
-    #     12 : 'December'
-    # }
 
     years = {
         '2020'
@@ -190,3 +176,10 @@ def xls(request):
     writer.writerow(['', '', 'итоговая сумма', sum])
 
     return response
+
+
+
+
+def request_(request):
+    return JsonResponse(list(Order.objects.all().values()), safe=False)
+
