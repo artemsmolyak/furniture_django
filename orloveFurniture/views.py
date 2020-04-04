@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+
+from orloveFurniture.models import OperationProjectCatalog
 from .models import Order,  RequiredMaterial, Storage, DillerCatalog, RequiredOperationProject, RequiredOperationManufactory,RequiredOperationContractor
 from .models import WorkerCatalog
 
@@ -186,3 +188,6 @@ def request_order(request, order_id):
 
 def request_operations(request, order_id):
     return JsonResponse(list(RequiredOperationProject.objects.filter(idOrder=order_id).values()), safe=False)
+
+def request_dict_operations(request):
+    return JsonResponse(list(OperationProjectCatalog.objects.all().values()), safe=False)
