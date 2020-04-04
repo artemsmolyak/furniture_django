@@ -43,6 +43,10 @@ urlpatterns = [
     url(r'^xls/$', views.xls, name='xls'),
 
 
-    url(r'^api/get/orders$', views.request_),
+
+    url(r'^api/get/order/(?P<order_id>\d+)/$', views.request_order),
+    url(r'^api/get/orders$', views.request_orders),
+    url(r'^api/get/operations/(?P<order_id>\d+)/$', views.request_operations)
+
 
 ]

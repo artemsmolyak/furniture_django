@@ -1,12 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Order, StatusCatalog, RequiredMaterial, Storage, DillerCatalog, RequiredOperationProject, RequiredOperationManufactory,RequiredOperationContractor
+from .models import Order,  RequiredMaterial, Storage, DillerCatalog, RequiredOperationProject, RequiredOperationManufactory,RequiredOperationContractor
 from .models import WorkerCatalog
-from .forms import RequiredOperationProjectForm, RequiredOperationManufactoryForm, RequiredOperationContractorForm
-from .forms import OrderForm, DillerForm
-from django.forms.models import inlineformset_factory
+
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
+
 
 import csv
 from django.http import JsonResponse
@@ -17,7 +15,6 @@ from django.http import JsonResponse
 def store(request):
 
     materialsInStore = Storage.objects.all()
-
 
     return render(request, "store.html", {'materialsInStore' : materialsInStore})
 
@@ -180,6 +177,12 @@ def xls(request):
 
 
 
-def request_(request):
+def request_orders(request):
     return JsonResponse(list(Order.objects.all().values()), safe=False)
 
+def request_order(request, order_id):
+    return JsonResponse(list(Order.objects.filter(id=order_id).values()), safe=False)
+
+
+def request_operations(request, order_id):
+    return JsonResponse(list(RequiredOperationProject.objects.filter(idOrder=order_id).values()), safe=False)
