@@ -179,15 +179,36 @@ def xls(request):
 
 
 
-def request_orders(request):
-    return JsonResponse(list(Order.objects.all().values()), safe=False)
+def request_orders(request, worker_id):
+
+    # список orders_id в которых есть заказы на конкретного worker
+    orders_queryset = RequiredOperationProject.objects.filter(idWorker = worker_id).order_by('idOrder_id').distinct().values('idOrder_id')
+
+    order_array = []
+    for val in orders_queryset:
+        order_array.append(val['idOrder_id'])
+
+    return JsonResponse(list(Order.objects.all().filter(id__in=order_array).values()), safe=False)
+
+
 
 def request_order(request, order_id):
+
+    #проверка, что дял этого заказа есть операции дял этого работника
+    #orders_queryset = RequiredOperationProject.objects.filter(idOrder=order_id).filter(idWorker = worker_id).values()
+
+    #if orders_queryset is None:
+    #    return None
+    # else:
     return JsonResponse(list(Order.objects.filter(id=order_id).values()), safe=False)
 
 
-def request_operations(request, order_id):
-    return JsonResponse(list(RequiredOperationProject.objects.filter(idOrder=order_id).values()), safe=False)
+
+def request_operations(request, order_id, worker_id):
+    return JsonResponse(list(RequiredOperationProject.objects.filter(idOrder=order_id).filter(idWorker=worker_id).values()), safe=False)
+
+
+
 
 def request_dict_operations(request):
     return JsonResponse(list(OperationProjectCatalog.objects.all().values()), safe=False)

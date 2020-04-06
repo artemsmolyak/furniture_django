@@ -72,7 +72,6 @@ class WorkerCatalog(models.Model):
 
 
 
-
 # class TypeOperationCatalog(models.Model):
 #     date_created = models.DateTimeField
 #
