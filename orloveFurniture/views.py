@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from orloveFurniture.models import OperationProjectCatalog
 from .models import Order,  RequiredMaterial, Storage, DillerCatalog, RequiredOperationProject, RequiredOperationManufactory,RequiredOperationContractor
-from .models import WorkerCatalog
+from .models import WorkerCatalog, MaterialCatalog
 
 from django.contrib.auth.decorators import login_required
 
@@ -246,6 +246,16 @@ def request_dict_operations(request):
     return JsonResponse(list(OperationProjectCatalog.objects.all().values()), safe=False)
 
 
+def request_dict_materials(request):
+    return JsonResponse(list(MaterialCatalog.objects.all().values()), safe=False)
+
+
+
 
 def request_auth(request, user_string, hash_string):
     return JsonResponse(list(WorkerCatalog.objects.all().filter(id = 1).values()), safe = False)
+
+
+
+def request_materials(request, order_id):
+    return JsonResponse(list( RequiredMaterial.objects.all().filter(idOrder = order_id).values()), safe=False)

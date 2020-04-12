@@ -44,10 +44,16 @@ urlpatterns = [
 
 
 
+
+
+
     url(r'^api/get/order/(?P<order_id>\d+)/$', views.request_order),
 
     url(r'^api/get/orders/work/(?P<worker_id>\d+)/$', views.request_orders_in_work),
     url(r'^api/get/orders/ready/(?P<worker_id>\d+)/$', views.request_orders_ready),
+
+
+    url(r'^api/get/materials/(?P<order_id>\d+)/$', views.request_materials),
 
 
     url(r'^api/get/operations/(?P<order_id>\d+)/(?P<worker_id>\d+)/$', views.request_operations),
@@ -56,5 +62,6 @@ urlpatterns = [
 
 
     url(r'^api/get/dict/operations/$', views.request_dict_operations),
+    url(r'^api/get/dict/materials/$', views.request_dict_materials),
 
 ]

@@ -120,6 +120,9 @@ class OperationProjectCatalog(models.Model):
 
     name = models.CharField(max_length=255)
 
+    def save(self, *args, **kwargs):
+        super(OperationProjectCatalog, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.name
 
@@ -207,8 +210,11 @@ class DillerCatalog(models.Model):
     date_created = models.DateTimeField
 
     name = models.CharField(max_length=255)
+
     address = models.CharField(max_length=255)
+
     email = models.CharField(max_length=255)
+
     phone = models.CharField(max_length=11)
 
     def __str__(self):
@@ -216,14 +222,24 @@ class DillerCatalog(models.Model):
 
 
 
+# Материалы
+
 class MaterialTypeCatalog(models.Model):
 
+    date_created = models.DateTimeField
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 
 class MaterialCategoryCatalog(models.Model):
 
+    date_created = models.DateTimeField
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 
 class MaterialCatalog(models.Model):
@@ -236,7 +252,6 @@ class MaterialCatalog(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class RequiredMaterial(models.Model):

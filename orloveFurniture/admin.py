@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Order,  Storage, RequiredMaterial, WorkerCatalog, PositionCatalog, MaterialCatalog, DillerCatalog, StatusCatalog
+from .models import Order,  Storage, RequiredMaterial, WorkerCatalog, PositionCatalog, MaterialCatalog, MaterialCategoryCatalog, MaterialTypeCatalog, DillerCatalog, StatusCatalog
 from .models import RequiredOperationProject, RequiredOperationManufactory, RequiredOperationContractor
 from .models import OperationContractorCatalog, OperationManufactoryCatalog, OperationProjectCatalog
 
@@ -24,5 +24,8 @@ admin.site.register(WorkerCatalog)
 admin.site.register(PositionCatalog)
 
 admin.site.register(MaterialCatalog)
+admin.site.register(MaterialTypeCatalog)
+admin.site.register(MaterialCategoryCatalog)
+
 admin.site.register(DillerCatalog)
 admin.site.register(StatusCatalog)
