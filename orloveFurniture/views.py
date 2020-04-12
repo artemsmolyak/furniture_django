@@ -179,16 +179,48 @@ def xls(request):
 
 
 
-def request_orders(request, worker_id):
+def request_orders_in_work(request, worker_id):
 
     # список orders_id в которых есть заказы на конкретного worker
     orders_queryset = RequiredOperationProject.objects.filter(idWorker = worker_id).order_by('idOrder_id').distinct().values('idOrder_id')
 
-    order_array = []
-    for val in orders_queryset:
-        order_array.append(val['idOrder_id'])
+    # Хотя бы однаоперация не выполнена
+    order_array_ready = []
+    order_array_to_work = []
 
-    return JsonResponse(list(Order.objects.all().filter(id__in=order_array).values()), safe=False)
+    for val in orders_queryset:
+
+        if val['isDone'] == True:
+            order_array_ready.append(val['idOrder_id'])
+        else:
+            order_array_to_work.append(val['idOrder_id'])
+
+
+    return JsonResponse(list(Order.objects.all().filter(id__in=order_array_to_work).values()), safe=False)
+
+
+def request_orders_ready(request, worker_id):
+    # список orders_id в которых есть заказы на конкретного worker
+    orders_queryset = RequiredOperationProject.objects.filter(idWorker = worker_id).order_by('idOrder_id').distinct().values()
+
+
+    #ТОЛЬКО полностью ВЫПОЛНЕННЫЕ
+    order_array_ready = []
+    order_array_to_work = []
+
+    for val in orders_queryset:
+
+        if val['isDone'] == True:
+            order_array_ready.append(val['idOrder_id'])
+        else:
+            order_array_to_work.append(val['idOrder_id'])
+
+    order_array_ready_set = set(order_array_ready)
+    order_array_to_work_set = set(order_array_to_work)
+
+    res_orders_id = order_array_ready_set.difference(order_array_to_work_set)
+
+    return JsonResponse(list(Order.objects.all().filter(id__in=res_orders_id).values()), safe=False)
 
 
 
@@ -212,3 +244,8 @@ def request_operations(request, order_id, worker_id):
 
 def request_dict_operations(request):
     return JsonResponse(list(OperationProjectCatalog.objects.all().values()), safe=False)
+
+
+
+def request_auth(request, user_string, hash_string):
+    return JsonResponse(list(WorkerCatalog.objects.all().filter(id = 1).values()), safe = False)

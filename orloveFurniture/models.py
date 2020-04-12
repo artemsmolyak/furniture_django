@@ -67,6 +67,9 @@ class WorkerCatalog(models.Model):
 
     position = models.ManyToManyField(PositionCatalog)
 
+    def save(self, *args, **kwargs):
+        super(WorkerCatalog, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.surname  + " " +  self.name + " " + self.patronymic
 
