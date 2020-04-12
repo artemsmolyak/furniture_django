@@ -182,7 +182,7 @@ def xls(request):
 def request_orders_in_work(request, worker_id):
 
     # список orders_id в которых есть заказы на конкретного worker
-    orders_queryset = RequiredOperationProject.objects.filter(idWorker = worker_id).order_by('idOrder_id').distinct().values('idOrder_id')
+    orders_queryset = RequiredOperationProject.objects.filter(idWorker = worker_id).order_by('idOrder_id').distinct().values() #'idOrder_id'
 
     # Хотя бы однаоперация не выполнена
     order_array_ready = []
